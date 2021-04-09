@@ -1,6 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>并查集</title>
+    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="并查集的定义"><a href="#并查集的定义" class="headerlink" title="并查集的定义"></a>并查集的定义</h2><p><font face="宋体">并查集是一种树型的数据结构，并可以高效的执行下面两种操作：</font></p>
+<ul>
+<li><font face="宋体">1. 查询两个元素是否属于同一分组；</font></li>
+<li><font face="宋体">2. 合并两个元素所在的分组。</font><span id="more"></span>
+<h2 id="并查集的结构特点"><a href="#并查集的结构特点" class="headerlink" title="并查集的结构特点"></a>并查集的结构特点</h2><font face="宋体">并查集是一种树型结构，但这棵树跟之前理解的二叉树、红黑树以及B树等不一样，这种树的要求比较简单。</font></li>
+<li><font face="宋体"> 每一个元素都有唯一的对应的分组标识（一个结点）；</font></li>
+<li><font face="宋体">每一组数据中的多个元素都在同一棵树中；</font></li>
+<li><font face="宋体"> 一个组中对应的树跟另外组所对应的树没有任何联系；</font></li>
+<li><font face="宋体">元素在树中并没有子父级关系的硬性要求。</font></li>
+</ul>
+<h2 id="并查集的代码实现与测试结果"><a href="#并查集的代码实现与测试结果" class="headerlink" title="并查集的代码实现与测试结果"></a>并查集的代码实现与测试结果</h2><pre><code>/*
+并查集的实现
+*/
+
+#include&lt;iostream&gt;
+
+using namespace std;
+
+class UF &#123;
+private:
+    int* eleAndGroup;
+    int count; //记录分组的个数
+public:
+    UF(int N) &#123;
+        this-&gt;count = N;
+        this-&gt;eleAndGroup = new int[N];
+        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
+        for (int i = 0; i &lt; N; i++) &#123;
+            eleAndGroup[i] = i;
+        &#125;
+    &#125;
+
+    ~UF() &#123;
+        delete eleAndGroup;
+    &#125;
+    //获取当前并查集中的数据有多少个分组
+    int length() &#123;
+        return count;
+    &#125;
+
+    //获取元素p所在的分组标识
+    int find(int p) &#123;
+        return eleAndGroup[p];
+    &#125;
+
+    //判断并查集中的元素p和q是否在同一分组中
+    bool connected(int p, int q) &#123;
+        return find(p) == find(q);
+    &#125;
+    //合并p所在的分组和q元素所在的分组
+    void unionGroup(int p, int q) &#123;
+        if (connected(p, q)) &#123;
+            return;
+        &#125;
+
+        //找到p所在的分组标识
+        int pGroup = eleAndGroup[p];
+
+        //找到q所在的分组标识
+        int qGroup = eleAndGroup[q];
+
+        //合并组:将p所在的分组所有元素都改为qGroup
+        for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &#123;
+            if (eleAndGroup[i] == pGroup) &#123;
+                eleAndGroup[i] = qGroup;
+            &#125;
+        &#125;
+        //分组个数-1
+        this-&gt;count--;
+    &#125;
+&#125;;
+
+int main() &#123;
+    UF uf(12);
+    while (true) &#123;
+        int q, p;
+        cout &lt;&lt; &quot;Please input two elements:&quot;;
+        cin &gt;&gt; p &gt;&gt; q;
+
+        if (uf.connected(p, q)) &#123;
+            cout &lt;&lt; &quot;两个元素在同一个分组！&quot; &lt;&lt; endl;
+        &#125;
+        uf.unionGroup(p, q);
+        cout &lt;&lt; &quot;分组个数:&quot; &lt;&lt; uf.length() &lt;&lt; endl;
+        
+        if(uf.length() == 1)&#123;
+            break;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
+<h4 id="改进的find和unionGroup方法"><a href="#改进的find和unionGroup方法" class="headerlink" title="改进的find和unionGroup方法"></a>改进的find和unionGroup方法</h4><p><font face="宋体">为了提升unionGroup的性能，需要重新设计find方法和union方法。</font></p>
+<ul>
+<li><font face="宋体">仍然让eleAndGroup数组的索引作为某个结点的元素；</font></li>
+<li><font face="宋体">eleAndGroup中的值不再是当前结点所在分组的标识，而是该结点的父结点。</font></li>
+</ul>
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>/*
+并查集的实现
+*/
+
+#include&lt;iostream&gt;
+
+using namespace std;
+
+class UF &#123;
+private:
+    int* eleAndGroup;
+    int count; //记录分组的个数
+public:
+    UF(int N) &#123;
+        this-&gt;count = N;
+        this-&gt;eleAndGroup = new int[N];
+        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
+        for (int i = 0; i &lt; N; i++) &#123;
+            eleAndGroup[i] = i;
+        &#125;
+    &#125;
+
+    ~UF() &#123;
+        delete eleAndGroup;
+    &#125;
+    //获取当前并查集中的数据有多少个分组
+    int length() &#123;
+        return count;
+    &#125;
+
+    //获取元素p所在的分组标识
+    int find(int p) &#123;
+        //return eleAndGroup[p];
+
+        while (true) &#123;
+            if (p == eleAndGroup[p]) &#123;
+                return p;
+            &#125;
+            p = eleAndGroup[p];
+        &#125;
+    &#125;
+
+    //判断并查集中的元素p和q是否在同一分组中
+    bool connected(int p, int q) &#123;
+        return find(p) == find(q);
+    &#125;
+    //合并p所在的分组和q元素所在的分组
+    void unionGroup(int p, int q) &#123;
+        //if (connected(p, q)) &#123;
+        //    return;
+        //&#125;
+
+        ////找到p所在的分组标识
+        //int pGroup = eleAndGroup[p];
+
+        ////找到q所在的分组标识
+        //int qGroup = eleAndGroup[q];
+
+        ////合并组:将p所在的分组所有元素都改为qGroup
+        //for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &#123;
+        //    if (eleAndGroup[i] == pGroup) &#123;
+        //        eleAndGroup[i] = qGroup;
+        //    &#125;
+        //&#125;
+        ////分组个数-1
+        //this-&gt;count--;
+
+        int pRoot = find(p);
+        int qRoot = find(q);
+
+        if (pRoot == qRoot) &#123;
+            return;
+        &#125;
+
+        //让p所在的树的根结点指向q所在树的根结点
+        eleAndGroup[pRoot] = qRoot;
+
+        this-&gt;count--;
+    &#125;
+&#125;;
+</code></pre>
+<p><font face="宋体">目前优化后的方法还是存在一个问题，要让并查集中所有的数据连通，任然需要调用N-1次unionGroup方法。虽然unionGroup方法的时间复杂度变为了O(N)，但是修改的find方法在最坏的情况下的时间复杂度是O(N)。我们知道，当树的高度越低，查找的速度越快，因此为了避免find方法的最坏情况发生，考虑使用路径压缩来降低树的高度。</font></p>
+<h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h4><p><font face="宋体">其实很简单，我们在处理两棵树合并的时候是直接将某棵树的根结点指向另一棵树的叶子结点，这就导致树的高度增加。为了避免这种情况，需要在合并两棵树的时候考察一下那棵树比较高，然后把较低的那棵树的根结点指向较高树的根结点即可。<br></font></p>
+<h5 id="代码实现如下："><a href="#代码实现如下：" class="headerlink" title="代码实现如下："></a>代码实现如下：</h5><pre><code>/*
+并查集的实现
+*/
+
+#include&lt;iostream&gt;
+
+using namespace std;
+
+class UF_Tree_Weighted &#123;
+private:
+    int* eleAndGroup; //记录结点元素和该元素所在的分组标识
+    int count; //记录分组的个数
+    int* sz; //用来存储每个根结点对应的树中保存的结点个数
+public:
+    UF_Tree_Weighted(int N) &#123;
+        this-&gt;count = N;
+        this-&gt;eleAndGroup = new int[N];
+        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
+        for (int i = 0; i &lt; N; i++) &#123;
+            eleAndGroup[i] = i;
+        &#125;
+
+        this-&gt;sz = new int[N];
+        //默认情况下，sz中每个索引处的值都是1
+        for (int i = 0; i &lt; N; i++) &#123;
+            sz[i] = 1;
+        &#125;
+    &#125;
+
+    ~UF_Tree_Weighted() &#123;
+        delete eleAndGroup;
+        delete sz;
+    &#125;
+    //获取当前并查集中的数据有多少个分组
+    int length() &#123;
+        return count;
+    &#125;
+
+    //获取元素p所在的分组标识
+    int find(int p) &#123;
+        //return eleAndGroup[p];
+
+        while (true) &#123;
+            if (p == eleAndGroup[p]) &#123;
+                return p;
+            &#125;
+            p = eleAndGroup[p];
+        &#125;
+    &#125;
+
+    //判断并查集中的元素p和q是否在同一分组中
+    bool connected(int p, int q) &#123;
+        return find(p) == find(q);
+    &#125;
+    //合并p所在的分组和q元素所在的分组
+    void unionGroup(int p, int q) &#123;
+        int pRoot = find(p);
+        int qRoot = find(q);
+
+        if (pRoot == qRoot) &#123;
+            return;
+        &#125;
+
+        if (sz[pRoot] &gt; sz[qRoot]) &#123;
+            eleAndGroup[qRoot] = pRoot;
+            sz[pRoot] += sz[qRoot];
+        &#125;
+        else &#123;
+            eleAndGroup[pRoot] = qRoot;
+            sz[qRoot] += sz[pRoot];
+        &#125;
+
+        this-&gt;count--;
+
+    &#125;
+&#125;;
+
+int main() &#123;
+    UF_Tree_Weighted uf(4);
+    while (true) &#123;
+        int q, p;
+        cout &lt;&lt; &quot;Please input two elements:&quot;;
+        cin &gt;&gt; p &gt;&gt; q;
+
+        if (uf.connected(p, q)) &#123;
+            cout &lt;&lt; &quot;两个元素在同一个分组！&quot; &lt;&lt; endl;
+        &#125;
+        uf.unionGroup(p, q);
+        cout &lt;&lt; &quot;分组个数:&quot; &lt;&lt; uf.length() &lt;&lt; endl;
+
+        if (uf.length() == 1) &#123;
+            break;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+  </entry>
+  <entry>
     <title>红黑树</title>
     <url>/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><font face="宋体">红黑树是基于2-3树思想的内含有红黑链的二叉查找树，并满足以下三种条件：<br></font></p>
@@ -439,292 +725,6 @@ int main() &#123;
 既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N\* logN)，为什么不考虑一直用归并排序呢？</font>
 </blockquote>
 <p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>并查集</title>
-    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
-    <content><![CDATA[<h2 id="并查集的定义"><a href="#并查集的定义" class="headerlink" title="并查集的定义"></a>并查集的定义</h2><p><font face="宋体">并查集是一种树型的数据结构，并可以高效的执行下面两种操作：</font></p>
-<ul>
-<li><font face="宋体">1. 查询两个元素是否属于同一分组；</font></li>
-<li><font face="宋体">2. 合并两个元素所在的分组。</font><span id="more"></span>
-<h2 id="并查集的结构特点"><a href="#并查集的结构特点" class="headerlink" title="并查集的结构特点"></a>并查集的结构特点</h2><font face="宋体">并查集是一种树型结构，但这棵树跟之前理解的二叉树、红黑树以及B树等不一样，这种树的要求比较简单。</font></li>
-<li><font face="宋体"> 每一个元素都有唯一的对应的分组标识（一个结点）；</font></li>
-<li><font face="宋体">每一组数据中的多个元素都在同一棵树中；</font></li>
-<li><font face="宋体"> 一个组中对应的树跟另外组所对应的树没有任何联系；</font></li>
-<li><font face="宋体">元素在树中并没有子父级关系的硬性要求。</font></li>
-</ul>
-<h2 id="并查集的代码实现与测试结果"><a href="#并查集的代码实现与测试结果" class="headerlink" title="并查集的代码实现与测试结果"></a>并查集的代码实现与测试结果</h2><pre><code>/*
-并查集的实现
-*/
-
-#include&lt;iostream&gt;
-
-using namespace std;
-
-class UF &#123;
-private:
-    int* eleAndGroup;
-    int count; //记录分组的个数
-public:
-    UF(int N) &#123;
-        this-&gt;count = N;
-        this-&gt;eleAndGroup = new int[N];
-        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
-        for (int i = 0; i &lt; N; i++) &#123;
-            eleAndGroup[i] = i;
-        &#125;
-    &#125;
-
-    ~UF() &#123;
-        delete eleAndGroup;
-    &#125;
-    //获取当前并查集中的数据有多少个分组
-    int length() &#123;
-        return count;
-    &#125;
-
-    //获取元素p所在的分组标识
-    int find(int p) &#123;
-        return eleAndGroup[p];
-    &#125;
-
-    //判断并查集中的元素p和q是否在同一分组中
-    bool connected(int p, int q) &#123;
-        return find(p) == find(q);
-    &#125;
-    //合并p所在的分组和q元素所在的分组
-    void unionGroup(int p, int q) &#123;
-        if (connected(p, q)) &#123;
-            return;
-        &#125;
-
-        //找到p所在的分组标识
-        int pGroup = eleAndGroup[p];
-
-        //找到q所在的分组标识
-        int qGroup = eleAndGroup[q];
-
-        //合并组:将p所在的分组所有元素都改为qGroup
-        for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &#123;
-            if (eleAndGroup[i] == pGroup) &#123;
-                eleAndGroup[i] = qGroup;
-            &#125;
-        &#125;
-        //分组个数-1
-        this-&gt;count--;
-    &#125;
-&#125;;
-
-int main() &#123;
-    UF uf(12);
-    while (true) &#123;
-        int q, p;
-        cout &lt;&lt; &quot;Please input two elements:&quot;;
-        cin &gt;&gt; p &gt;&gt; q;
-
-        if (uf.connected(p, q)) &#123;
-            cout &lt;&lt; &quot;两个元素在同一个分组！&quot; &lt;&lt; endl;
-        &#125;
-        uf.unionGroup(p, q);
-        cout &lt;&lt; &quot;分组个数:&quot; &lt;&lt; uf.length() &lt;&lt; endl;
-        
-        if(uf.length() == 1)&#123;
-            break;
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
-<h4 id="改进的find和unionGroup方法"><a href="#改进的find和unionGroup方法" class="headerlink" title="改进的find和unionGroup方法"></a>改进的find和unionGroup方法</h4><p><font face="宋体">为了提升unionGroup的性能，需要重新设计find方法和union方法。</font></p>
-<ul>
-<li><font face="宋体">仍然让eleAndGroup数组的索引作为某个结点的元素；</font></li>
-<li><font face="宋体">eleAndGroup中的值不再是当前结点所在分组的标识，而是该结点的父结点。</font></li>
-</ul>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>/*
-并查集的实现
-*/
-
-#include&lt;iostream&gt;
-
-using namespace std;
-
-class UF &#123;
-private:
-    int* eleAndGroup;
-    int count; //记录分组的个数
-public:
-    UF(int N) &#123;
-        this-&gt;count = N;
-        this-&gt;eleAndGroup = new int[N];
-        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
-        for (int i = 0; i &lt; N; i++) &#123;
-            eleAndGroup[i] = i;
-        &#125;
-    &#125;
-
-    ~UF() &#123;
-        delete eleAndGroup;
-    &#125;
-    //获取当前并查集中的数据有多少个分组
-    int length() &#123;
-        return count;
-    &#125;
-
-    //获取元素p所在的分组标识
-    int find(int p) &#123;
-        //return eleAndGroup[p];
-
-        while (true) &#123;
-            if (p == eleAndGroup[p]) &#123;
-                return p;
-            &#125;
-            p = eleAndGroup[p];
-        &#125;
-    &#125;
-
-    //判断并查集中的元素p和q是否在同一分组中
-    bool connected(int p, int q) &#123;
-        return find(p) == find(q);
-    &#125;
-    //合并p所在的分组和q元素所在的分组
-    void unionGroup(int p, int q) &#123;
-        //if (connected(p, q)) &#123;
-        //    return;
-        //&#125;
-
-        ////找到p所在的分组标识
-        //int pGroup = eleAndGroup[p];
-
-        ////找到q所在的分组标识
-        //int qGroup = eleAndGroup[q];
-
-        ////合并组:将p所在的分组所有元素都改为qGroup
-        //for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &#123;
-        //    if (eleAndGroup[i] == pGroup) &#123;
-        //        eleAndGroup[i] = qGroup;
-        //    &#125;
-        //&#125;
-        ////分组个数-1
-        //this-&gt;count--;
-
-        int pRoot = find(p);
-        int qRoot = find(q);
-
-        if (pRoot == qRoot) &#123;
-            return;
-        &#125;
-
-        //让p所在的树的根结点指向q所在树的根结点
-        eleAndGroup[pRoot] = qRoot;
-
-        this-&gt;count--;
-    &#125;
-&#125;;
-</code></pre>
-<p><font face="宋体">目前优化后的方法还是存在一个问题，要让并查集中所有的数据连通，任然需要调用N-1次unionGroup方法。虽然unionGroup方法的时间复杂度变为了O(N)，但是修改的find方法在最坏的情况下的时间复杂度是O(N)。我们知道，当树的高度越低，查找的速度越快，因此为了避免find方法的最坏情况发生，考虑使用路径压缩来降低树的高度。</font></p>
-<h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h4><p><font face="宋体">其实很简单，我们在处理两棵树合并的时候是直接将某棵树的根结点指向另一棵树的叶子结点，这就导致树的高度增加。为了避免这种情况，需要在合并两棵树的时候考察一下那棵树比较高，然后把较低的那棵树的根结点指向较高树的根结点即可。<br></font></p>
-<h5 id="代码实现如下："><a href="#代码实现如下：" class="headerlink" title="代码实现如下："></a>代码实现如下：</h5><pre><code>/*
-并查集的实现
-*/
-
-#include&lt;iostream&gt;
-
-using namespace std;
-
-class UF_Tree_Weighted &#123;
-private:
-    int* eleAndGroup; //记录结点元素和该元素所在的分组标识
-    int count; //记录分组的个数
-    int* sz; //用来存储每个根结点对应的树中保存的结点个数
-public:
-    UF_Tree_Weighted(int N) &#123;
-        this-&gt;count = N;
-        this-&gt;eleAndGroup = new int[N];
-        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
-        for (int i = 0; i &lt; N; i++) &#123;
-            eleAndGroup[i] = i;
-        &#125;
-
-        this-&gt;sz = new int[N];
-        //默认情况下，sz中每个索引处的值都是1
-        for (int i = 0; i &lt; N; i++) &#123;
-            sz[i] = 1;
-        &#125;
-    &#125;
-
-    ~UF_Tree_Weighted() &#123;
-        delete eleAndGroup;
-        delete sz;
-    &#125;
-    //获取当前并查集中的数据有多少个分组
-    int length() &#123;
-        return count;
-    &#125;
-
-    //获取元素p所在的分组标识
-    int find(int p) &#123;
-        //return eleAndGroup[p];
-
-        while (true) &#123;
-            if (p == eleAndGroup[p]) &#123;
-                return p;
-            &#125;
-            p = eleAndGroup[p];
-        &#125;
-    &#125;
-
-    //判断并查集中的元素p和q是否在同一分组中
-    bool connected(int p, int q) &#123;
-        return find(p) == find(q);
-    &#125;
-    //合并p所在的分组和q元素所在的分组
-    void unionGroup(int p, int q) &#123;
-        int pRoot = find(p);
-        int qRoot = find(q);
-
-        if (pRoot == qRoot) &#123;
-            return;
-        &#125;
-
-        if (sz[pRoot] &gt; sz[qRoot]) &#123;
-            eleAndGroup[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
-        &#125;
-        else &#123;
-            eleAndGroup[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        &#125;
-
-        this-&gt;count--;
-
-    &#125;
-&#125;;
-
-int main() &#123;
-    UF_Tree_Weighted uf(4);
-    while (true) &#123;
-        int q, p;
-        cout &lt;&lt; &quot;Please input two elements:&quot;;
-        cin &gt;&gt; p &gt;&gt; q;
-
-        if (uf.connected(p, q)) &#123;
-            cout &lt;&lt; &quot;两个元素在同一个分组！&quot; &lt;&lt; endl;
-        &#125;
-        uf.unionGroup(p, q);
-        cout &lt;&lt; &quot;分组个数:&quot; &lt;&lt; uf.length() &lt;&lt; endl;
-
-        if (uf.length() == 1) &#123;
-            break;
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
 ]]></content>
       <categories>
         <category>数据结构与算法</category>
