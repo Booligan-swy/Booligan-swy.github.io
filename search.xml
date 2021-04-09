@@ -287,211 +287,6 @@ int main() &#123;
       </categories>
   </entry>
   <entry>
-    <title>谈谈快速排序和归并排序</title>
-    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<blockquote>
-<p><font face="宋体">参考了《算法图解》和黑马的数据结构与算法的笔记。</font></p>
-</blockquote>
-<h2 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h2><p><font face="宋体">快速排序是对冒泡排序的改进，是一种典型的分而治之(divide and conquer, D&amp;C)算法。其思想是：在任意选取一个基准元素后，遍历一遍所有的元素并将所有元素分成独立的两个部分，其中一部分的任意一个元素都要比该基准要小，而另外一个组的任意一个元素要比这个基准要大，然后再对这两个部分进行同样的操作：选取基准并交换两边的元素，使得一边的元素都要比基准要小而另外一边要比基准要大，依次类推，最终使得整个队列有序。可以递归进行该操作。</font></p>
-<span id="more"></span>
-<h3 id="排序的原理："><a href="#排序的原理：" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
-<li><font face="宋体">1.首先任意选取一个分界值，能够通过该分界值将所有的元素分成两个独立的部分；</font></li>
-<li><font face="宋体">2.将大于该分界值的所有元素放在数组的右边，而小于该分界值的所有元素放在数组的左边；</font></li>
-<li><font face="宋体">3.然后左右两边的数组又可以独立进行排序，在左侧的数组中任意选取一个分界值，并将该数组中所有大于该分界值的元素放在数组的右边，而小于该分界值的元素放在数组的左边。对于右侧的数组可以同样进行该操作；</font></li>
-<li><font face="宋体">4.重复上面的过程（可以利用递归）。通过递归将左右两侧的数组都排序好后，整个数组也就有序了。</font></li>
-</ul>
-<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><pre><code>/*
-快速排序的CPP实现
-*/
-#include&lt;iostream&gt;
-#include&lt;vector&gt;
-
-using namespace std;
-
-template&lt;class T&gt;
-class QuickSort &#123;
-public:
-    bool compare(vector&lt;T&gt; v, int i, int j) &#123;
-        return v[i] &lt; v[j];
-    &#125;
-
-    void exch(vector&lt;T&gt;&amp; v, int i, int j) &#123;
-        T temp = v[i];
-        v[i] = v[j];
-        v[j] = temp;
-    &#125;
-
-    int partion(vector&lt;T&gt;&amp; v, int low, int high) &#123;
-        int l_left = low;
-        int l_right = high + 1;
-
-        while (true) &#123;
-            while (!compare(v, --l_right, low)) &#123;
-                if (l_right == low) &#123;
-                    break;
-                &#125;
-            &#125;
-
-            while (compare(v, ++l_left, low)) &#123;
-                if (l_left == high) &#123;
-                    break;
-                &#125;
-            &#125;
-
-            if (l_left &lt; l_right) &#123;
-                exch(v, l_left, l_right);
-            &#125;
-            else &#123;
-                break;
-            &#125;
-
-
-        &#125;
-        exch(v, low, l_right);
-
-        return l_right;
-
-    &#125;
-
-    void sort(vector&lt;T&gt;&amp; v, int low, int high) &#123;
-        if (low &gt;= high) &#123;
-            return;
-        &#125;
-
-        int pa = partion(v, low, high);
-
-        sort(v, low, pa - 1);
-        sort(v, pa + 1, high);
-
-
-    &#125;
-
-    void sort(vector&lt;T&gt;&amp; v) &#123;
-        int low = 0;
-        int high = v.size() - 1;
-
-        sort(v, low, high);
-    &#125;
-
-&#125;;
-
-int main()
-&#123;
-    vector&lt;int&gt; a = &#123; 456,8,146,849,158,8169,153,8489 &#125;;
-    QuickSort&lt;int&gt; q;
-    q.sort(a);
-    for (vector&lt;int&gt;::iterator iter = a.begin(); iter != a.end(); iter++)
-        cout &lt;&lt; *iter &lt;&lt; &quot; &quot;;
-    cout &lt;&lt; endl;
-
-    return 0;
-&#125;
-</code></pre>
-<h4 id="运行的结果如下："><a href="#运行的结果如下：" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617885506406.png" alt="Alt text"></p>
-<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><p><font face="宋体">归并排序是一种建立在归并操作的有效的排序算法，也是一种典型的D&amp;C算法。其思想是：先将序列拆分成单个元素，然后将元素合并成有序的子序列，再将有序的子序列合并成一个有序的表。</font></p>
-<h3 id="排序的原理：-1"><a href="#排序的原理：-1" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
-<li><font face="宋体">1.尽可能将数据拆分成两个元素相等的子组，并对子组进一步拆分，至每个子组中的元素个数为1；</font></li>
-<li><font face="宋体">2.将相邻的两个子组合并成一个有序的大组；</font></li>
-<li><font face="宋体">3.不断的重复2，直到只有一个组为止。</font><h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3></li>
-</ul>
-<pre><code>/*
-归并排序CPP实现
-*/
-#include&lt;iostream&gt;
-#include&lt;vector&gt;
-
-using namespace std;
-
-template&lt;class T&gt;
-class MergeSort &#123;
-public:
-    T* assist;
-    bool compare(vector&lt;T&gt; v, int i, int j) &#123;
-        return v[i] &lt; v[j];
-    &#125;
-
-    void merge(vector&lt;T&gt;&amp; v, int low, int mid, int high) &#123;
-        int l_left = low;
-        int l_right = mid + 1;
-        int index = low;
-        while (l_left &lt;= mid &amp;&amp; l_right &lt;= high) &#123;
-            if (compare(v, l_left, l_right)) &#123;
-                assist[index++] = v[l_left++];
-            &#125;
-            else &#123;
-                assist[index++] = v[l_right++];
-            &#125;
-        &#125;
-
-        while (l_left &lt;= mid) &#123;
-            assist[index++] = v[l_left++];
-        &#125;
-
-        while (l_right &lt;= high) &#123;
-            assist[index++] = v[l_right++];
-        &#125;
-
-        for (int i = low; i &lt;= high; i++) &#123;
-            v[i] = assist[i];
-        &#125;
-
-    &#125;
-
-    void sort(vector&lt;T&gt;&amp; v, int low, int high) &#123;
-        if (low &gt;= high) &#123;
-            return;
-        &#125;
-        int mid = (low + high) / 2;
-        sort(v, low, mid);
-        sort(v, mid + 1, high);
-
-        merge(v, low, mid, high);
-    &#125;
-
-    void sort(vector&lt;T&gt;&amp; v) &#123;
-        int low = 0; 
-        int high = v.size() - 1;
-        assist = new T[v.size()];
-        sort(v, low, high);
-    &#125;
-
-&#125;;
-
-int main() &#123;
-    vector&lt;int&gt; a = &#123; 456,8,146,849,158,8169,153,8489 &#125;;
-    MergeSort&lt;int&gt; q;
-    q.sort(a);
-    for (vector&lt;int&gt;::iterator iter = a.begin(); iter != a.end(); iter++)
-        cout &lt;&lt; *iter &lt;&lt; &quot; &quot;;
-    cout &lt;&lt; endl;
-    return 0;
-&#125;
-</code></pre>
-<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
-<h2 id="快速排序与归并排序的时间复杂度分析"><a href="#快速排序与归并排序的时间复杂度分析" class="headerlink" title="快速排序与归并排序的时间复杂度分析"></a>快速排序与归并排序的时间复杂度分析</h2><p><font face="宋体">归并排序的时间复杂度是O(N<em>logN)。而快速排序在一般情况下的时间复杂度是O(N</em>logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。</font></p>
-<blockquote>
-<font face="宋体">
-那什么是快速排序的糟糕情况呢？</font>
-</blockquote>
-<font face="宋体">
-其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）</font>
-
-
-<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
-<p><font face="宋体">注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）<br></font></p>
-<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
-<p><font face="宋体">一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。</font></p>
-<blockquote>
-<font face="宋体">
-既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N\* logN)，为什么不考虑一直用归并排序呢？</font>
-</blockquote>
-<p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-  </entry>
-  <entry>
     <title>红黑树</title>
     <url>/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><font face="宋体">红黑树是基于2-3树思想的内含有红黑链的二叉查找树，并满足以下三种条件：<br></font></p>
@@ -725,6 +520,211 @@ int main() &#123;
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h4><p><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693579337.png" alt="Alt text"></p>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>谈谈快速排序和归并排序</title>
+    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<blockquote>
+<p><font face="宋体">参考了《算法图解》和黑马的数据结构与算法的笔记。</font></p>
+</blockquote>
+<h2 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h2><p><font face="宋体">快速排序是对冒泡排序的改进，是一种典型的分而治之(divide and conquer, D&amp;C)算法。其思想是：在任意选取一个基准元素后，遍历一遍所有的元素并将所有元素分成独立的两个部分，其中一部分的任意一个元素都要比该基准要小，而另外一个组的任意一个元素要比这个基准要大，然后再对这两个部分进行同样的操作：选取基准并交换两边的元素，使得一边的元素都要比基准要小而另外一边要比基准要大，依次类推，最终使得整个队列有序。可以递归进行该操作。</font></p>
+<span id="more"></span>
+<h3 id="排序的原理："><a href="#排序的原理：" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
+<li><font face="宋体">1.首先任意选取一个分界值，能够通过该分界值将所有的元素分成两个独立的部分；</font></li>
+<li><font face="宋体">2.将大于该分界值的所有元素放在数组的右边，而小于该分界值的所有元素放在数组的左边；</font></li>
+<li><font face="宋体">3.然后左右两边的数组又可以独立进行排序，在左侧的数组中任意选取一个分界值，并将该数组中所有大于该分界值的元素放在数组的右边，而小于该分界值的元素放在数组的左边。对于右侧的数组可以同样进行该操作；</font></li>
+<li><font face="宋体">4.重复上面的过程（可以利用递归）。通过递归将左右两侧的数组都排序好后，整个数组也就有序了。</font></li>
+</ul>
+<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><pre><code>/*
+快速排序的CPP实现
+*/
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+
+template&lt;class T&gt;
+class QuickSort &#123;
+public:
+    bool compare(vector&lt;T&gt; v, int i, int j) &#123;
+        return v[i] &lt; v[j];
+    &#125;
+
+    void exch(vector&lt;T&gt;&amp; v, int i, int j) &#123;
+        T temp = v[i];
+        v[i] = v[j];
+        v[j] = temp;
+    &#125;
+
+    int partion(vector&lt;T&gt;&amp; v, int low, int high) &#123;
+        int l_left = low;
+        int l_right = high + 1;
+
+        while (true) &#123;
+            while (!compare(v, --l_right, low)) &#123;
+                if (l_right == low) &#123;
+                    break;
+                &#125;
+            &#125;
+
+            while (compare(v, ++l_left, low)) &#123;
+                if (l_left == high) &#123;
+                    break;
+                &#125;
+            &#125;
+
+            if (l_left &lt; l_right) &#123;
+                exch(v, l_left, l_right);
+            &#125;
+            else &#123;
+                break;
+            &#125;
+
+
+        &#125;
+        exch(v, low, l_right);
+
+        return l_right;
+
+    &#125;
+
+    void sort(vector&lt;T&gt;&amp; v, int low, int high) &#123;
+        if (low &gt;= high) &#123;
+            return;
+        &#125;
+
+        int pa = partion(v, low, high);
+
+        sort(v, low, pa - 1);
+        sort(v, pa + 1, high);
+
+
+    &#125;
+
+    void sort(vector&lt;T&gt;&amp; v) &#123;
+        int low = 0;
+        int high = v.size() - 1;
+
+        sort(v, low, high);
+    &#125;
+
+&#125;;
+
+int main()
+&#123;
+    vector&lt;int&gt; a = &#123; 456,8,146,849,158,8169,153,8489 &#125;;
+    QuickSort&lt;int&gt; q;
+    q.sort(a);
+    for (vector&lt;int&gt;::iterator iter = a.begin(); iter != a.end(); iter++)
+        cout &lt;&lt; *iter &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+
+    return 0;
+&#125;
+</code></pre>
+<h4 id="运行的结果如下："><a href="#运行的结果如下：" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617885506406.png" alt="Alt text"></p>
+<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><p><font face="宋体">归并排序是一种建立在归并操作的有效的排序算法，也是一种典型的D&amp;C算法。其思想是：先将序列拆分成单个元素，然后将元素合并成有序的子序列，再将有序的子序列合并成一个有序的表。</font></p>
+<h3 id="排序的原理：-1"><a href="#排序的原理：-1" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
+<li><font face="宋体">1.尽可能将数据拆分成两个元素相等的子组，并对子组进一步拆分，至每个子组中的元素个数为1；</font></li>
+<li><font face="宋体">2.将相邻的两个子组合并成一个有序的大组；</font></li>
+<li><font face="宋体">3.不断的重复2，直到只有一个组为止。</font><h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3></li>
+</ul>
+<pre><code>/*
+归并排序CPP实现
+*/
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+
+template&lt;class T&gt;
+class MergeSort &#123;
+public:
+    T* assist;
+    bool compare(vector&lt;T&gt; v, int i, int j) &#123;
+        return v[i] &lt; v[j];
+    &#125;
+
+    void merge(vector&lt;T&gt;&amp; v, int low, int mid, int high) &#123;
+        int l_left = low;
+        int l_right = mid + 1;
+        int index = low;
+        while (l_left &lt;= mid &amp;&amp; l_right &lt;= high) &#123;
+            if (compare(v, l_left, l_right)) &#123;
+                assist[index++] = v[l_left++];
+            &#125;
+            else &#123;
+                assist[index++] = v[l_right++];
+            &#125;
+        &#125;
+
+        while (l_left &lt;= mid) &#123;
+            assist[index++] = v[l_left++];
+        &#125;
+
+        while (l_right &lt;= high) &#123;
+            assist[index++] = v[l_right++];
+        &#125;
+
+        for (int i = low; i &lt;= high; i++) &#123;
+            v[i] = assist[i];
+        &#125;
+
+    &#125;
+
+    void sort(vector&lt;T&gt;&amp; v, int low, int high) &#123;
+        if (low &gt;= high) &#123;
+            return;
+        &#125;
+        int mid = (low + high) / 2;
+        sort(v, low, mid);
+        sort(v, mid + 1, high);
+
+        merge(v, low, mid, high);
+    &#125;
+
+    void sort(vector&lt;T&gt;&amp; v) &#123;
+        int low = 0; 
+        int high = v.size() - 1;
+        assist = new T[v.size()];
+        sort(v, low, high);
+    &#125;
+
+&#125;;
+
+int main() &#123;
+    vector&lt;int&gt; a = &#123; 456,8,146,849,158,8169,153,8489 &#125;;
+    MergeSort&lt;int&gt; q;
+    q.sort(a);
+    for (vector&lt;int&gt;::iterator iter = a.begin(); iter != a.end(); iter++)
+        cout &lt;&lt; *iter &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+    return 0;
+&#125;
+</code></pre>
+<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
+<h2 id="快速排序与归并排序的时间复杂度分析"><a href="#快速排序与归并排序的时间复杂度分析" class="headerlink" title="快速排序与归并排序的时间复杂度分析"></a>快速排序与归并排序的时间复杂度分析</h2><p><font face="宋体">归并排序的时间复杂度是O(N<em>logN)。而快速排序在一般情况下的时间复杂度是O(N</em>logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。</font></p>
+<blockquote>
+<font face="宋体">
+那什么是快速排序的糟糕情况呢？</font>
+</blockquote>
+<font face="宋体">
+其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）</font>
+
+
+<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
+<p><font face="宋体">注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）<br></font></p>
+<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
+<p><font face="宋体">一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。</font></p>
+<blockquote>
+<font face="宋体">
+既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N\* logN)，为什么不考虑一直用归并排序呢？</font>
+</blockquote>
+<p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
 ]]></content>
       <categories>
         <category>数据结构与算法</category>
