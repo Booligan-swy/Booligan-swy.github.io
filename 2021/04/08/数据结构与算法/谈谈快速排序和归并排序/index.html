@@ -29,7 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 
 
@@ -532,84 +533,100 @@ int main()
 <h3 id="排序的原理：-1"><a href="#排序的原理：-1" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
 <li><font face="宋体">1.尽可能将数据拆分成两个元素相等的子组，并对子组进一步拆分，至每个子组中的元素个数为1；</font></li>
 <li><font face="宋体">2.将相邻的两个子组合并成一个有序的大组；</font></li>
-<li><font face="宋体">3.不断的重复2，直到只有一个组为止。</font><h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3>```<br>/*<br>归并排序CPP实现</li>
-<li>/<br>#include<iostream><br>#include<vector></vector></iostream></li>
+<li><font face="宋体">3.不断的重复2，直到只有一个组为止。</font><h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3></li>
 </ul>
-<p>using namespace std;</p>
-<p>template<class t><br>class MergeSort {<br>public:<br>    T* assist;<br>    bool compare(vector<T> v, int i, int j) {<br>        return v[i] &lt; v[j];<br>    }</T></class></p>
-<pre><code>void merge(vector&lt;T&gt;&amp; v, int low, int mid, int high) &#123;
-    int l_left = low;
-    int l_right = mid + 1;
-    int index = low;
-    while (l_left &lt;= mid &amp;&amp; l_right &lt;= high) &#123;
-        if (compare(v, l_left, l_right)) &#123;
+<pre><code>/*
+归并排序CPP实现
+*/
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+
+using namespace std;
+
+template&lt;class T&gt;
+class MergeSort &#123;
+public:
+    T* assist;
+    bool compare(vector&lt;T&gt; v, int i, int j) &#123;
+        return v[i] &lt; v[j];
+    &#125;
+
+    void merge(vector&lt;T&gt;&amp; v, int low, int mid, int high) &#123;
+        int l_left = low;
+        int l_right = mid + 1;
+        int index = low;
+        while (l_left &lt;= mid &amp;&amp; l_right &lt;= high) &#123;
+            if (compare(v, l_left, l_right)) &#123;
+                assist[index++] = v[l_left++];
+            &#125;
+            else &#123;
+                assist[index++] = v[l_right++];
+            &#125;
+        &#125;
+
+        while (l_left &lt;= mid) &#123;
             assist[index++] = v[l_left++];
         &#125;
-        else &#123;
+
+        while (l_right &lt;= high) &#123;
             assist[index++] = v[l_right++];
         &#125;
+
+        for (int i = low; i &lt;= high; i++) &#123;
+            v[i] = assist[i];
+        &#125;
+
     &#125;
 
-    while (l_left &lt;= mid) &#123;
-        assist[index++] = v[l_left++];
+    void sort(vector&lt;T&gt;&amp; v, int low, int high) &#123;
+        if (low &gt;= high) &#123;
+            return;
+        &#125;
+        int mid = (low + high) / 2;
+        sort(v, low, mid);
+        sort(v, mid + 1, high);
+
+        merge(v, low, mid, high);
     &#125;
 
-    while (l_right &lt;= high) &#123;
-        assist[index++] = v[l_right++];
+    void sort(vector&lt;T&gt;&amp; v) &#123;
+        int low = 0; 
+        int high = v.size() - 1;
+        assist = new T[v.size()];
+        sort(v, low, high);
     &#125;
 
-    for (int i = low; i &lt;= high; i++) &#123;
-        v[i] = assist[i];
-    &#125;
+&#125;;
 
-&#125;
-
-void sort(vector&lt;T&gt;&amp; v, int low, int high) &#123;
-    if (low &gt;= high) &#123;
-        return;
-    &#125;
-    int mid = (low + high) / 2;
-    sort(v, low, mid);
-    sort(v, mid + 1, high);
-
-    merge(v, low, mid, high);
-&#125;
-
-void sort(vector&lt;T&gt;&amp; v) &#123;
-    int low = 0; 
-    int high = v.size() - 1;
-    assist = new T[v.size()];
-    sort(v, low, high);
+int main() &#123;
+    vector&lt;int&gt; a = &#123; 456,8,146,849,158,8169,153,8489 &#125;;
+    MergeSort&lt;int&gt; q;
+    q.sort(a);
+    for (vector&lt;int&gt;::iterator iter = a.begin(); iter != a.end(); iter++)
+        cout &lt;&lt; *iter &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+    return 0;
 &#125;
 </code></pre>
-<p>};</p>
-<p>int main() {<br>    vector<int> a = { 456,8,146,849,158,8169,153,8489 };<br>    MergeSort<int> q;<br>    q.sort(a);<br>    for (vector<int>::iterator iter = a.begin(); iter != a.end(); iter++)<br>        cout &lt;&lt; *iter &lt;&lt; “ “;<br>    cout &lt;&lt; endl;<br>    return 0;<br>}</int></int></int></p>
-<pre><code>#### 运行的结果如下：
-![Alt text](./谈谈快速排序和归并排序/1617887489715.png)
-
-## 快速排序与归并排序的时间复杂度分析
-&lt;font face=&quot;宋体&quot;&gt;归并排序的时间复杂度是O(N*logN)。而快速排序在一般情况下的时间复杂度是O(N*logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。&lt;/font&gt;
-&gt;&lt;font face=&quot;宋体&quot;&gt;
-那什么是快速排序的糟糕情况呢？&lt;/font&gt;
-
-&lt;font face=&quot;宋体&quot;&gt;
-其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）&lt;/font&gt;
-
-![Alt text](./谈谈快速排序和归并排序/1617887997615.png)
-
-&lt;font face=&quot;宋体&quot;&gt;注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）
-&lt;/font&gt;
-
-![Alt text](./谈谈快速排序和归并排序/1617888304641.png)
-
-&lt;font face=&quot;宋体&quot;&gt;一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。&lt;/font&gt;
+<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
+<h2 id="快速排序与归并排序的时间复杂度分析"><a href="#快速排序与归并排序的时间复杂度分析" class="headerlink" title="快速排序与归并排序的时间复杂度分析"></a>快速排序与归并排序的时间复杂度分析</h2><p><font face="宋体">归并排序的时间复杂度是O(N<em>logN)。而快速排序在一般情况下的时间复杂度是O(N</em>logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。</font></p>
+<blockquote>
+<font face="宋体">
+那什么是快速排序的糟糕情况呢？</font>
+</blockquote>
+<font face="宋体">
+其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）</font>
 
 
-&gt; &lt;font face=&quot;宋体&quot;&gt;
-既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N*logN)，为什么不考虑一直用归并排序呢？&lt;/font&gt;
-
-&lt;font face=&quot;宋体&quot;&gt;其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N*logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l*N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。&lt;/font&gt;
-</code></pre>
+<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
+<p><font face="宋体">注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）<br></font></p>
+<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
+<p><font face="宋体">一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。</font></p>
+<blockquote>
+<font face="宋体">
+既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N\* logN)，为什么不考虑一直用归并排序呢？</font>
+</blockquote>
+<p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
 
                 
             </div>
