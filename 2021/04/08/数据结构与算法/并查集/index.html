@@ -427,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
@@ -459,274 +459,274 @@
 <li><font face="宋体"> 一个组中对应的树跟另外组所对应的树没有任何联系；</font></li>
 <li><font face="宋体">元素在树中并没有子父级关系的硬性要求。</font></li>
 </ul>
-<h2 id="并查集的代码实现与测试结果"><a href="#并查集的代码实现与测试结果" class="headerlink" title="并查集的代码实现与测试结果"></a>并查集的代码实现与测试结果</h2><pre><code>/*
+<h2 id="并查集的代码实现与测试结果"><a href="#并查集的代码实现与测试结果" class="headerlink" title="并查集的代码实现与测试结果"></a>并查集的代码实现与测试结果</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
 并查集的实现
-*/
+*/</span>
 
-#include&lt;iostream&gt;
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-class UF &#123;
-private:
-    int* eleAndGroup;
-    int count; //记录分组的个数
-public:
-    UF(int N) &#123;
-        this-&gt;count = N;
-        this-&gt;eleAndGroup = new int[N];
-        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
-        for (int i = 0; i &lt; N; i++) &#123;
-            eleAndGroup[i] = i;
-        &#125;
-    &#125;
+<span class="token keyword">class</span> <span class="token class-name">UF</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> eleAndGroup<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录分组的个数</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">UF</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>count <span class="token operator">=</span> N<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>eleAndGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            eleAndGroup<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    ~UF() &#123;
-        delete eleAndGroup;
-    &#125;
-    //获取当前并查集中的数据有多少个分组
-    int length() &#123;
-        return count;
-    &#125;
+    <span class="token operator">~</span><span class="token function">UF</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> eleAndGroup<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取当前并查集中的数据有多少个分组</span>
+    <span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    //获取元素p所在的分组标识
-    int find(int p) &#123;
-        return eleAndGroup[p];
-    &#125;
+    <span class="token comment" spellcheck="true">//获取元素p所在的分组标识</span>
+    <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> eleAndGroup<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    //判断并查集中的元素p和q是否在同一分组中
-    bool connected(int p, int q) &#123;
-        return find(p) == find(q);
-    &#125;
-    //合并p所在的分组和q元素所在的分组
-    void unionGroup(int p, int q) &#123;
-        if (connected(p, q)) &#123;
-            return;
-        &#125;
+    <span class="token comment" spellcheck="true">//判断并查集中的元素p和q是否在同一分组中</span>
+    <span class="token keyword">bool</span> <span class="token function">connected</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//合并p所在的分组和q元素所在的分组</span>
+    <span class="token keyword">void</span> <span class="token function">unionGroup</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">connected</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        //找到p所在的分组标识
-        int pGroup = eleAndGroup[p];
+        <span class="token comment" spellcheck="true">//找到p所在的分组标识</span>
+        <span class="token keyword">int</span> pGroup <span class="token operator">=</span> eleAndGroup<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        //找到q所在的分组标识
-        int qGroup = eleAndGroup[q];
+        <span class="token comment" spellcheck="true">//找到q所在的分组标识</span>
+        <span class="token keyword">int</span> qGroup <span class="token operator">=</span> eleAndGroup<span class="token punctuation">[</span>q<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        //合并组:将p所在的分组所有元素都改为qGroup
-        for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &#123;
-            if (eleAndGroup[i] == pGroup) &#123;
-                eleAndGroup[i] = qGroup;
-            &#125;
-        &#125;
-        //分组个数-1
-        this-&gt;count--;
-    &#125;
-&#125;;
+        <span class="token comment" spellcheck="true">//合并组:将p所在的分组所有元素都改为qGroup</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>eleAndGroup<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>eleAndGroup<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>eleAndGroup<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pGroup<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                eleAndGroup<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> qGroup<span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//分组个数-1</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>count<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 
-int main() &#123;
-    UF uf(12);
-    while (true) &#123;
-        int q, p;
-        cout &lt;&lt; &quot;Please input two elements:&quot;;
-        cin &gt;&gt; p &gt;&gt; q;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    UF <span class="token function">uf</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> q<span class="token punctuation">,</span> p<span class="token punctuation">;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Please input two elements:"</span><span class="token punctuation">;</span>
+        cin <span class="token operator">>></span> p <span class="token operator">>></span> q<span class="token punctuation">;</span>
 
-        if (uf.connected(p, q)) &#123;
-            cout &lt;&lt; &quot;两个元素在同一个分组！&quot; &lt;&lt; endl;
-        &#125;
-        uf.unionGroup(p, q);
-        cout &lt;&lt; &quot;分组个数:&quot; &lt;&lt; uf.length() &lt;&lt; endl;
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>uf<span class="token punctuation">.</span><span class="token function">connected</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"两个元素在同一个分组！"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        uf<span class="token punctuation">.</span><span class="token function">unionGroup</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"分组个数:"</span> <span class="token operator">&lt;&lt;</span> uf<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
         
-        if(uf.length() == 1)&#123;
-            break;
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>uf<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
 <h4 id="改进的find和unionGroup方法"><a href="#改进的find和unionGroup方法" class="headerlink" title="改进的find和unionGroup方法"></a>改进的find和unionGroup方法</h4><p><font face="宋体">为了提升unionGroup的性能，需要重新设计find方法和union方法。</font></p>
 <ul>
 <li><font face="宋体">仍然让eleAndGroup数组的索引作为某个结点的元素；</font></li>
 <li><font face="宋体">eleAndGroup中的值不再是当前结点所在分组的标识，而是该结点的父结点。</font></li>
 </ul>
-<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre><code>/*
+<h4 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
 并查集的实现
-*/
+*/</span>
 
-#include&lt;iostream&gt;
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-class UF &#123;
-private:
-    int* eleAndGroup;
-    int count; //记录分组的个数
-public:
-    UF(int N) &#123;
-        this-&gt;count = N;
-        this-&gt;eleAndGroup = new int[N];
-        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
-        for (int i = 0; i &lt; N; i++) &#123;
-            eleAndGroup[i] = i;
-        &#125;
-    &#125;
+<span class="token keyword">class</span> <span class="token class-name">UF</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> eleAndGroup<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> count<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录分组的个数</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">UF</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>count <span class="token operator">=</span> N<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>eleAndGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            eleAndGroup<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    ~UF() &#123;
-        delete eleAndGroup;
-    &#125;
-    //获取当前并查集中的数据有多少个分组
-    int length() &#123;
-        return count;
-    &#125;
+    <span class="token operator">~</span><span class="token function">UF</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> eleAndGroup<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取当前并查集中的数据有多少个分组</span>
+    <span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    //获取元素p所在的分组标识
-    int find(int p) &#123;
-        //return eleAndGroup[p];
+    <span class="token comment" spellcheck="true">//获取元素p所在的分组标识</span>
+    <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//return eleAndGroup[p];</span>
 
-        while (true) &#123;
-            if (p == eleAndGroup[p]) &#123;
-                return p;
-            &#125;
-            p = eleAndGroup[p];
-        &#125;
-    &#125;
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> eleAndGroup<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> p<span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            p <span class="token operator">=</span> eleAndGroup<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    //判断并查集中的元素p和q是否在同一分组中
-    bool connected(int p, int q) &#123;
-        return find(p) == find(q);
-    &#125;
-    //合并p所在的分组和q元素所在的分组
-    void unionGroup(int p, int q) &#123;
-        //if (connected(p, q)) &#123;
-        //    return;
-        //&#125;
+    <span class="token comment" spellcheck="true">//判断并查集中的元素p和q是否在同一分组中</span>
+    <span class="token keyword">bool</span> <span class="token function">connected</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//合并p所在的分组和q元素所在的分组</span>
+    <span class="token keyword">void</span> <span class="token function">unionGroup</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//if (connected(p, q)) &amp;#123;</span>
+        <span class="token comment" spellcheck="true">//    return;</span>
+        <span class="token comment" spellcheck="true">//&amp;#125;</span>
 
-        ////找到p所在的分组标识
-        //int pGroup = eleAndGroup[p];
+        <span class="token comment" spellcheck="true">////找到p所在的分组标识</span>
+        <span class="token comment" spellcheck="true">//int pGroup = eleAndGroup[p];</span>
 
-        ////找到q所在的分组标识
-        //int qGroup = eleAndGroup[q];
+        <span class="token comment" spellcheck="true">////找到q所在的分组标识</span>
+        <span class="token comment" spellcheck="true">//int qGroup = eleAndGroup[q];</span>
 
-        ////合并组:将p所在的分组所有元素都改为qGroup
-        //for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &#123;
-        //    if (eleAndGroup[i] == pGroup) &#123;
-        //        eleAndGroup[i] = qGroup;
-        //    &#125;
-        //&#125;
-        ////分组个数-1
-        //this-&gt;count--;
+        <span class="token comment" spellcheck="true">////合并组:将p所在的分组所有元素都改为qGroup</span>
+        <span class="token comment" spellcheck="true">//for (int i = 0; i &lt; sizeof(eleAndGroup) / sizeof(eleAndGroup[0]); i++) &amp;#123;</span>
+        <span class="token comment" spellcheck="true">//    if (eleAndGroup[i] == pGroup) &amp;#123;</span>
+        <span class="token comment" spellcheck="true">//        eleAndGroup[i] = qGroup;</span>
+        <span class="token comment" spellcheck="true">//    &amp;#125;</span>
+        <span class="token comment" spellcheck="true">//&amp;#125;</span>
+        <span class="token comment" spellcheck="true">////分组个数-1</span>
+        <span class="token comment" spellcheck="true">//this->count--;</span>
 
-        int pRoot = find(p);
-        int qRoot = find(q);
+        <span class="token keyword">int</span> pRoot <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> qRoot <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        if (pRoot == qRoot) &#123;
-            return;
-        &#125;
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pRoot <span class="token operator">==</span> qRoot<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        //让p所在的树的根结点指向q所在树的根结点
-        eleAndGroup[pRoot] = qRoot;
+        <span class="token comment" spellcheck="true">//让p所在的树的根结点指向q所在树的根结点</span>
+        eleAndGroup<span class="token punctuation">[</span>pRoot<span class="token punctuation">]</span> <span class="token operator">=</span> qRoot<span class="token punctuation">;</span>
 
-        this-&gt;count--;
-    &#125;
-&#125;;
-</code></pre>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>count<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><font face="宋体">目前优化后的方法还是存在一个问题，要让并查集中所有的数据连通，任然需要调用N-1次unionGroup方法。虽然unionGroup方法的时间复杂度变为了O(N)，但是修改的find方法在最坏的情况下的时间复杂度是O(N)。我们知道，当树的高度越低，查找的速度越快，因此为了避免find方法的最坏情况发生，考虑使用路径压缩来降低树的高度。</font></p>
 <h4 id="路径压缩"><a href="#路径压缩" class="headerlink" title="路径压缩"></a>路径压缩</h4><p><font face="宋体">其实很简单，我们在处理两棵树合并的时候是直接将某棵树的根结点指向另一棵树的叶子结点，这就导致树的高度增加。为了避免这种情况，需要在合并两棵树的时候考察一下那棵树比较高，然后把较低的那棵树的根结点指向较高树的根结点即可。<br></font></p>
-<h5 id="代码实现如下："><a href="#代码实现如下：" class="headerlink" title="代码实现如下："></a>代码实现如下：</h5><pre><code>/*
+<h5 id="代码实现如下："><a href="#代码实现如下：" class="headerlink" title="代码实现如下："></a>代码实现如下：</h5><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
 并查集的实现
-*/
+*/</span>
 
-#include&lt;iostream&gt;
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
 
-using namespace std;
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-class UF_Tree_Weighted &#123;
-private:
-    int* eleAndGroup; //记录结点元素和该元素所在的分组标识
-    int count; //记录分组的个数
-    int* sz; //用来存储每个根结点对应的树中保存的结点个数
-public:
-    UF_Tree_Weighted(int N) &#123;
-        this-&gt;count = N;
-        this-&gt;eleAndGroup = new int[N];
-        //初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况
-        for (int i = 0; i &lt; N; i++) &#123;
-            eleAndGroup[i] = i;
-        &#125;
+<span class="token keyword">class</span> <span class="token class-name">UF_Tree_Weighted</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> eleAndGroup<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录结点元素和该元素所在的分组标识</span>
+    <span class="token keyword">int</span> count<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录分组的个数</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> sz<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//用来存储每个根结点对应的树中保存的结点个数</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">UF_Tree_Weighted</span><span class="token punctuation">(</span><span class="token keyword">int</span> N<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>count <span class="token operator">=</span> N<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>eleAndGroup <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//初始化eleAndGroup中每个索引是并查集中的每个元素，而eleAndGroup中的每个元素是并查集的分组情况</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            eleAndGroup<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        this-&gt;sz = new int[N];
-        //默认情况下，sz中每个索引处的值都是1
-        for (int i = 0; i &lt; N; i++) &#123;
-            sz[i] = 1;
-        &#125;
-    &#125;
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>sz <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//默认情况下，sz中每个索引处的值都是1</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            sz<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    ~UF_Tree_Weighted() &#123;
-        delete eleAndGroup;
-        delete sz;
-    &#125;
-    //获取当前并查集中的数据有多少个分组
-    int length() &#123;
-        return count;
-    &#125;
+    <span class="token operator">~</span><span class="token function">UF_Tree_Weighted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> eleAndGroup<span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> sz<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取当前并查集中的数据有多少个分组</span>
+    <span class="token keyword">int</span> <span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    //获取元素p所在的分组标识
-    int find(int p) &#123;
-        //return eleAndGroup[p];
+    <span class="token comment" spellcheck="true">//获取元素p所在的分组标识</span>
+    <span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//return eleAndGroup[p];</span>
 
-        while (true) &#123;
-            if (p == eleAndGroup[p]) &#123;
-                return p;
-            &#125;
-            p = eleAndGroup[p];
-        &#125;
-    &#125;
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> eleAndGroup<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> p<span class="token punctuation">;</span>
+            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            p <span class="token operator">=</span> eleAndGroup<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-    //判断并查集中的元素p和q是否在同一分组中
-    bool connected(int p, int q) &#123;
-        return find(p) == find(q);
-    &#125;
-    //合并p所在的分组和q元素所在的分组
-    void unionGroup(int p, int q) &#123;
-        int pRoot = find(p);
-        int qRoot = find(q);
+    <span class="token comment" spellcheck="true">//判断并查集中的元素p和q是否在同一分组中</span>
+    <span class="token keyword">bool</span> <span class="token function">connected</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token function">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//合并p所在的分组和q元素所在的分组</span>
+    <span class="token keyword">void</span> <span class="token function">unionGroup</span><span class="token punctuation">(</span><span class="token keyword">int</span> p<span class="token punctuation">,</span> <span class="token keyword">int</span> q<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> pRoot <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> qRoot <span class="token operator">=</span> <span class="token function">find</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        if (pRoot == qRoot) &#123;
-            return;
-        &#125;
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pRoot <span class="token operator">==</span> qRoot<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        if (sz[pRoot] &gt; sz[qRoot]) &#123;
-            eleAndGroup[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
-        &#125;
-        else &#123;
-            eleAndGroup[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        &#125;
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sz<span class="token punctuation">[</span>pRoot<span class="token punctuation">]</span> <span class="token operator">></span> sz<span class="token punctuation">[</span>qRoot<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            eleAndGroup<span class="token punctuation">[</span>qRoot<span class="token punctuation">]</span> <span class="token operator">=</span> pRoot<span class="token punctuation">;</span>
+            sz<span class="token punctuation">[</span>pRoot<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> sz<span class="token punctuation">[</span>qRoot<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            eleAndGroup<span class="token punctuation">[</span>pRoot<span class="token punctuation">]</span> <span class="token operator">=</span> qRoot<span class="token punctuation">;</span>
+            sz<span class="token punctuation">[</span>qRoot<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> sz<span class="token punctuation">[</span>pRoot<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
-        this-&gt;count--;
+        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>count<span class="token operator">--</span><span class="token punctuation">;</span>
 
-    &#125;
-&#125;;
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 
-int main() &#123;
-    UF_Tree_Weighted uf(4);
-    while (true) &#123;
-        int q, p;
-        cout &lt;&lt; &quot;Please input two elements:&quot;;
-        cin &gt;&gt; p &gt;&gt; q;
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    UF_Tree_Weighted <span class="token function">uf</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> q<span class="token punctuation">,</span> p<span class="token punctuation">;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Please input two elements:"</span><span class="token punctuation">;</span>
+        cin <span class="token operator">>></span> p <span class="token operator">>></span> q<span class="token punctuation">;</span>
 
-        if (uf.connected(p, q)) &#123;
-            cout &lt;&lt; &quot;两个元素在同一个分组！&quot; &lt;&lt; endl;
-        &#125;
-        uf.unionGroup(p, q);
-        cout &lt;&lt; &quot;分组个数:&quot; &lt;&lt; uf.length() &lt;&lt; endl;
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>uf<span class="token punctuation">.</span><span class="token function">connected</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"两个元素在同一个分组！"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+        uf<span class="token punctuation">.</span><span class="token function">unionGroup</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"分组个数:"</span> <span class="token operator">&lt;&lt;</span> uf<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
 
-        if (uf.length() == 1) &#123;
-            break;
-        &#125;
-    &#125;
-    return 0;
-&#125;
-</code></pre>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>uf<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1385,7 +1385,7 @@ int main() &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">4.7k</span>&nbsp;字
+                class="white-color">4.8k</span>&nbsp;字
             
             
             
