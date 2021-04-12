@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>并查集</title>
-    <url>/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<h2 id="并查集的定义"><a href="#并查集的定义" class="headerlink" title="并查集的定义"></a>并查集的定义</h2><p><font face="宋体">并查集是一种树型的数据结构，并可以高效的执行下面两种操作：</font></p>
 <ul>
 <li><font face="宋体">1. 查询两个元素是否属于同一分组；</font></li>
@@ -95,7 +95,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
+<h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
 <h4 id="改进的find和unionGroup方法"><a href="#改进的find和unionGroup方法" class="headerlink" title="改进的find和unionGroup方法"></a>改进的find和unionGroup方法</h4><p><font face="宋体">为了提升unionGroup的性能，需要重新设计find方法和union方法。</font></p>
 <ul>
 <li><font face="宋体">仍然让eleAndGroup数组的索引作为某个结点的元素；</font></li>
@@ -291,7 +291,7 @@
   </entry>
   <entry>
     <title>红黑树</title>
-    <url>/Booligan-swy.github.io/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <url>/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><font face="宋体">红黑树是基于2-3树思想的内含有红黑链的二叉查找树，并满足以下三种条件：<br></font></p>
 <ul>
 <li><font face="宋体">1. 红色链接必须是左链接；</font></li>
@@ -305,15 +305,15 @@
 <li> <font face="宋体">3. 让h的color属性成为x的color属性；</font></li>
 <li> <font face="宋体">4. 让h的color属性置为红色。</font></li>
 </ul>
-<p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693263761.png" alt="Alt text"></p>
+<p><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693263761.png" alt="Alt text"></p>
 <h4 id="2-右旋"><a href="#2-右旋" class="headerlink" title="2.右旋"></a>2.右旋</h4><p><font face="宋体">当某个结点的左子结点的链接是红色的，而其左子结点的左子结点也是红色的（不满足定义中的第二个条件）则需要对其进行右旋操作。</font><br><font face="宋体"><br>右旋的过程（前提条件当前结点为h，而其左子结点为x）：</font></p>
 <ul>
 <li><font face="宋体">1. 让x的右子结点成为h的左子结点；</font></li>
 <li> <font face="宋体">2. 让h成为x的右子结点；</font></li>
 <li> <font face="宋体">3. 让h的color属性成为x的color属性；</font></li>
-<li> <font face="宋体">4. 让h的color属性置为红色。</font><br><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693449983.png" alt="Alt text"></li>
+<li> <font face="宋体">4. 让h的color属性置为红色。</font><br><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693449983.png" alt="Alt text"></li>
 </ul>
-<h4 id="3-颜色反转"><a href="#3-颜色反转" class="headerlink" title="3.颜色反转"></a>3.颜色反转</h4><p><font face="宋体">当某个结点的左子结点的链接是红色的，而其右子结点也是红色的，则需要将其两个子结点的链接设置为黑色，而其父链接设置为红色。</font><br><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693520319.png" alt="Alt text"></p>
+<h4 id="3-颜色反转"><a href="#3-颜色反转" class="headerlink" title="3.颜色反转"></a>3.颜色反转</h4><p><font face="宋体">当某个结点的左子结点的链接是红色的，而其右子结点也是红色的，则需要将其两个子结点的链接设置为黑色，而其父链接设置为红色。</font><br><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693520319.png" alt="Alt text"></p>
 <h3 id="代码块："><a href="#代码块：" class="headerlink" title="代码块："></a>代码块：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
 红黑树的CPP实现
 */</span>
@@ -522,7 +522,7 @@
 <span class="token punctuation">}</span>
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h4><p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693579337.png" alt="Alt text"></p>
+<h4 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h4><p><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693579337.png" alt="Alt text"></p>
 ]]></content>
       <categories>
         <category>数据结构与算法</category>
@@ -533,7 +533,7 @@
   </entry>
   <entry>
     <title>谈谈快速排序和归并排序</title>
-    <url>/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<blockquote>
 <p><font face="宋体">参考了《算法图解》和黑马的数据结构与算法的笔记。</font></p>
 </blockquote>
@@ -632,7 +632,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="运行的结果如下："><a href="#运行的结果如下：" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617885506406.png" alt="Alt text"></p>
+<h4 id="运行的结果如下："><a href="#运行的结果如下：" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617885506406.png" alt="Alt text"></p>
 <h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><p><font face="宋体">归并排序是一种建立在归并操作的有效的排序算法，也是一种典型的D&amp;C算法。其思想是：先将序列拆分成单个元素，然后将元素合并成有序的子序列，再将有序的子序列合并成一个有序的表。</font></p>
 <h3 id="排序的原理：-1"><a href="#排序的原理：-1" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
 <li><font face="宋体">1.尽可能将数据拆分成两个元素相等的子组，并对子组进一步拆分，至每个子组中的元素个数为1；</font></li>
@@ -712,7 +712,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
+<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
 <h2 id="快速排序与归并排序的时间复杂度分析"><a href="#快速排序与归并排序的时间复杂度分析" class="headerlink" title="快速排序与归并排序的时间复杂度分析"></a>快速排序与归并排序的时间复杂度分析</h2><p><font face="宋体">归并排序的时间复杂度是O(N<em>logN)。而快速排序在一般情况下的时间复杂度是O(N</em>logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。</font></p>
 <blockquote>
 <font face="宋体">
@@ -722,9 +722,9 @@
 其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）</font>
 
 
-<p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
+<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
 <p><font face="宋体">注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）<br></font></p>
-<p><img src="/Booligan-swy.github.io/Booligan-swy.github.io/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
+<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
 <p><font face="宋体">一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。</font></p>
 <blockquote>
 <font face="宋体">
@@ -741,7 +741,7 @@
   </entry>
   <entry>
     <title>谈谈贪心算法</title>
-    <url>/Booligan-swy.github.io/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
+    <url>/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<pre><code>asd1
 </code></pre>
 <h3 id="saasd"><a href="#saasd" class="headerlink" title="saasd"></a>saasd</h3>]]></content>
