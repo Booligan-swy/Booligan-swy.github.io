@@ -532,19 +532,6 @@
       </tags>
   </entry>
   <entry>
-    <title>谈谈贪心算法</title>
-    <url>/booligan/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<pre><code>asd1
-</code></pre>
-<h3 id="saasd"><a href="#saasd" class="headerlink" title="saasd"></a>saasd</h3>]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>谈谈快速排序和归并排序</title>
     <url>/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
     <content><![CDATA[<blockquote>
@@ -745,6 +732,19 @@
 </blockquote>
 <p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
 ]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>谈谈贪心算法</title>
+    <url>/booligan/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<pre><code>asd1
+</code></pre>
+<h3 id="saasd"><a href="#saasd" class="headerlink" title="saasd"></a>saasd</h3>]]></content>
       <categories>
         <category>数据结构与算法</category>
       </categories>
