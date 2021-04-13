@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="谈谈贪心算法, WyShen">
+    <meta name="keywords" content="刷题LeetCode, WyShen">
     <meta name="description" content="仅仅是记载自己所学习的过程和内容......">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>谈谈贪心算法 | WyShen</title>
+    <title>刷题LeetCode | WyShen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">谈谈贪心算法</h1>
+                    <h1 class="description center-align post-title">刷题LeetCode</h1>
                 </div>
             </div>
         </div>
@@ -386,25 +386,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">数据结构与算法</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                数据结构与算法
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -413,7 +400,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-10
+                    2021-04-12
                 </div>
                 
 
@@ -427,7 +414,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    721
+                    0
                 </div>
                 
 
@@ -449,152 +436,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>参考博客“从零开始学贪心算法”，主要是为了学习并记录这个过程，博客地址为：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32400847/article/details/51336300?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161819966416780357242016%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161819966416780357242016&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-51336300.first_rank_v2_pc_rank_v29&amp;utm_term=%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">https://blog.csdn.net/qq_32400847/article/details/51336300?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161819966416780357242016%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161819966416780357242016&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-51336300.first_rank_v2_pc_rank_v29&amp;utm_term=%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95</a></p>
-</blockquote>
-<h2 id="贪心算法的定义"><a href="#贪心算法的定义" class="headerlink" title="贪心算法的定义"></a>贪心算法的定义</h2><p><font face="宋体">贪心算法是指在对问题求解时，总是得到当前看来最好的结果，从而达到最终的结果最好。也即是求取局部最优，从而达到全局最优。选择贪心策略必须具备无后效性，也就是某个状态以前的过程不会影响以后的状态。</font></p>
-<h3 id="问题1-：活动选择问题"><a href="#问题1-：活动选择问题" class="headerlink" title="问题1 ：活动选择问题"></a>问题1 ：活动选择问题</h3><p><font face="宋体">活动选择问题一直是我们生活当中经常会遇到的问题，例如有多个活动需要使用同一个教室等等，那如何使得这些活动尽可能多的被安排而不相互冲突呢？</font></p>
-<p><font face="宋体">假设有11个活动，分别为act_1,act_2,act_3,…,act_11,请尽量安排尽可能多的活动而不会冲突，如下表格所示：</font></p>
-<table>
-<thead>
-<tr>
-<th>活动</th>
-<th align="center">act_1</th>
-<th>act_2</th>
-<th>act_3</th>
-<th>act_4</th>
-<th>act_5</th>
-<th>act_6</th>
-<th>act_7</th>
-<th>act_8</th>
-<th>act_9</th>
-<th>act_10</th>
-<th>act_11</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>start</td>
-<td align="center">1</td>
-<td>3</td>
-<td>0</td>
-<td>5</td>
-<td>3</td>
-<td>5</td>
-<td>6</td>
-<td>8</td>
-<td>8</td>
-<td>2</td>
-<td>12</td>
-</tr>
-<tr>
-<td>end</td>
-<td align="center">4</td>
-<td>5</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-<td>11</td>
-<td>12</td>
-<td>13</td>
-<td>14</td>
-</tr>
-</tbody></table>
-<h4 id="实现代码如下："><a href="#实现代码如下：" class="headerlink" title="实现代码如下："></a>实现代码如下：</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
-活动选择问题
-*/</span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;algorithm></span></span>
-
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">//利用结构体定义事件</span>
-<span class="token keyword">struct</span> Act <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> start<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> end<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-
-<span class="token comment" spellcheck="true">//比较结束时间</span>
-<span class="token keyword">bool</span> <span class="token function">cmp</span><span class="token punctuation">(</span>Act a<span class="token punctuation">,</span> Act b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> a<span class="token punctuation">.</span>end <span class="token operator">&lt;</span> b<span class="token punctuation">.</span>end<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//利用贪心算法求取合适的事件安排顺序，并返回安排事件的数量</span>
-<span class="token keyword">int</span> <span class="token function">greedy_activity_selector</span><span class="token punctuation">(</span>Act<span class="token operator">*</span> act_e<span class="token punctuation">,</span> <span class="token keyword">int</span> N<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>act_e<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">.</span>start <span class="token operator">>=</span> act_e<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            i <span class="token operator">=</span> j<span class="token punctuation">;</span>
-            num<span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> num<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> N<span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Please input the number of events: "</span><span class="token punctuation">;</span>
-    cin <span class="token operator">>></span> N<span class="token punctuation">;</span>
-
-
-    <span class="token comment" spellcheck="true">//事先定义可以存储200个事件的结构体</span>
-    Act act<span class="token punctuation">[</span><span class="token number">200</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        cin <span class="token operator">>></span> act<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>start <span class="token operator">>></span> act<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token function">greedy_activity_selector</span><span class="token punctuation">(</span>act<span class="token punctuation">,</span> N<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"The number of scheduled events is "</span> <span class="token operator">&lt;&lt;</span> result <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="运行的结果如下所示："><a href="#运行的结果如下所示：" class="headerlink" title="运行的结果如下所示："></a>运行的结果如下所示：</h5><p><img src="/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20210412175109507.png" alt="image-20210412175109507"></p>
-<h3 id="问题2：-钱币找零"><a href="#问题2：-钱币找零" class="headerlink" title="问题2： 钱币找零"></a>问题2： 钱币找零</h3><p><font face="宋体">钱币找零也是我们生活当中经常遇到的问题，除了特别的要求，我们一般都是尽量用面额较大的钱币去处理找零问题。而且贪心算法也是这种思想，每一步用尽可能大的面额纸币。</font></p>
-<h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
-钱币找零
-*/</span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;vector></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token keyword">int</span> money<span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> moneyCount <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> moneyNum <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">,</span><span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> moneyNum<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> cNum <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>money <span class="token operator">/</span> moneyNum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> moneyCount<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        money <span class="token operator">-</span><span class="token operator">=</span> cNum <span class="token operator">*</span> moneyNum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        num <span class="token operator">+</span><span class="token operator">=</span> cNum<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>money <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> num <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> num<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> money<span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Please input the denomination of coin: "</span><span class="token punctuation">;</span>
-    cin <span class="token operator">>></span> money<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token function">solve</span><span class="token punctuation">(</span>money<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Result:"</span> <span class="token operator">&lt;&lt;</span> result <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h5><p><img src="/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20210412210023292.png" alt="image-20210412210023292"></p>
-<blockquote>
-<p>待更……</p>
-</blockquote>
-
+                
                 
             </div>
             <hr/>
@@ -620,7 +462,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Booligan-swy.github.io/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">https://Booligan-swy.github.io/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</a>
+                    <a href="https://Booligan-swy.github.io/2021/04/12/LeetCode/%E5%88%B7%E9%A2%98LeetCode/">https://Booligan-swy.github.io/2021/04/12/LeetCode/%E5%88%B7%E9%A2%98LeetCode/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -657,11 +499,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">数据结构与算法</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -975,13 +813,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/12/LeetCode/%E5%88%B7%E9%A2%98LeetCode/">
+                <a href="/2021/04/12/LeetCode/%E5%88%B7%E9%A2%98LeetCode435/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="刷题LeetCode">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="刷题LeetCode435">
                         
-                        <span class="card-title">刷题LeetCode</span>
+                        <span class="card-title">刷题LeetCode435</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -996,11 +834,23 @@
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Booligan-swy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/LeetCode/" class="post-category">
+                                    LeetCode
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/LeetCode/">
+                        <span class="chip bg-color">LeetCode</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1012,27 +862,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+                <a href="/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="谈谈快速排序和归并排序">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="谈谈贪心算法">
                         
-                        <span class="card-title">谈谈快速排序和归并排序</span>
+                        <span class="card-title">谈谈贪心算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-参考了《算法图解》和黑马的数据结构与算法的笔记。
-
-快速排序（Quick Sort）快速排序是对冒泡排序的改进，是一种典型的分而治之(divide and conquer, D&amp;C)算法。其思想是：在任意选取一个基准元素后，遍历一
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
                             </span>
                         <span class="publish-author">
                             
