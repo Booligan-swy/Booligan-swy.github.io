@@ -427,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    629
+                    1.9k
                 </div>
                 
 
@@ -508,33 +508,198 @@
 <li><font face="宋体">说明：不允许修改给定的链表。</font></li>
 <li><font face="宋体">进阶：你是否可以使用 O(1) 空间解决此题？</font></li>
 </ul>
-<h3 id="题解思路：-2"><a href="#题解思路：-2" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<h3 id="代码如下：-2"><a href="#代码如下：-2" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="LeetCode76"><a href="#LeetCode76" class="headerlink" title="LeetCode76:"></a>LeetCode76:</h2><p>题目描述:</p>
-<p><font face="宋体"></font></p>
+<h3 id="题解思路：-2"><a href="#题解思路：-2" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">判断链表是否存在环路是双指针应用的典型，通过指定两个快慢指针，若链表不存在环路，则优先判断快指针是否走到尽头（指向nullptr），反之，快慢指针会不停的走下去，直到快指针与慢指针在某个节点相遇。</font></p>
+<p><font face="宋体">若要知道环的入口，只需在快慢指针相遇时，让第三个指针指向head，并与慢指针一样的速度，若两者相遇，则该相遇的位置就是环的入口位置。</font></p>
+<h3 id="代码如下：-2"><a href="#代码如下：-2" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode <span class="token operator">*</span><span class="token function">detectCycle</span><span class="token punctuation">(</span>ListNode <span class="token operator">*</span>head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> head<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+           <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+       <span class="token punctuation">}</span>
+       
+        ListNode<span class="token operator">*</span> slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        slow <span class="token operator">=</span> slow<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        fast <span class="token operator">=</span> fast<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>slow <span class="token operator">!=</span> fast<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>fast <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">||</span> fast<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            slow <span class="token operator">=</span> slow<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>slow <span class="token operator">!=</span> fast<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            slow <span class="token operator">=</span> slow<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fast<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="LeetCode76"><a href="#LeetCode76" class="headerlink" title="LeetCode76:"></a>LeetCode76:</h2><blockquote>
+<p>此题待更……</p>
+</blockquote>
+<p>题目描述:</p>
+<p><font face="宋体">给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 “” 。</font></p>
+<ul>
+<li><font face="宋体">注意：如果 s 中存在这样的子串，我们保证它是唯一的答案。</font></li>
+</ul>
+<p><img src="/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413171853222.png" alt="image-20210413171853222"></p>
 <h3 id="题解思路：-3"><a href="#题解思路：-3" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <h3 id="代码如下：-3"><a href="#代码如下：-3" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="LeetCode633"><a href="#LeetCode633" class="headerlink" title="LeetCode633:"></a>LeetCode633:</h2><p>题目描述:</p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-4"><a href="#题解思路：-4" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<h3 id="代码如下：-4"><a href="#代码如下：-4" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><font face="宋体">给定一个非负整数 <code>c</code> ，你要判断是否存在两个整数 <code>a</code> 和 <code>b</code>，使得 <code>a^2 + b^2 = c</code> 。</font></p>
+<h3 id="题解思路：-4"><a href="#题解思路：-4" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">第一眼看到这个题目感觉很简单，并联想到使用双指针去处理这件事。左边一个指针，右边一个指针，然后求取这两个指针指向的元素平方是否与目标数相等，如果大了，就把右边的指针减一，否则就是将左边的指针加一。做出的第一版代码在leetcode上超时。</font></p>
+<p><font face="宋体">方法二：利用一个for循环，当目标数减去i值后开平方，然后将开平方的数与其int类型进行比较是否相等，若相等则返回true，否则返回false。</font></p>
+<p><font face="宋体">方法三：在基于方法二的基础上，不使用系统的sqrt方法，而是使用二分查找。</font></p>
+<h3 id="代码如下：-4"><a href="#代码如下：-4" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*超时代码,并未能成功验证代码的正确性*/</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">judgeSquareSum</span><span class="token punctuation">(</span><span class="token keyword">long</span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>c <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">long</span> l_left <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">long</span> l_right <span class="token operator">=</span> c <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>l_left <span class="token operator">&lt;=</span> l_right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>l_left<span class="token operator">*</span>l_left <span class="token operator">==</span> c <span class="token operator">||</span> l_right<span class="token operator">*</span>l_right <span class="token operator">==</span> c<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>l_left<span class="token operator">*</span>l_left<span class="token operator">+</span>l_right<span class="token operator">*</span>l_right <span class="token operator">></span> c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                l_right<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>l_left<span class="token operator">*</span>l_left<span class="token operator">+</span>l_right<span class="token operator">*</span>l_right <span class="token operator">&lt;</span> c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                l_left<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*方法二*/</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">judgeSquareSum</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">*</span>i <span class="token operator">&lt;=</span> c<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">double</span> j <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span>c<span class="token operator">-</span>i<span class="token operator">*</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*方法三：递归使用二分查找*/</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">judgeSquareSum</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">long</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">*</span>i <span class="token operator">&lt;=</span> c<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">long</span> j <span class="token operator">=</span> c<span class="token operator">-</span>i<span class="token operator">*</span>i<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">binary_search</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>j<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">bool</span> <span class="token function">binary_search</span><span class="token punctuation">(</span><span class="token keyword">long</span> low<span class="token punctuation">,</span> <span class="token keyword">long</span> high<span class="token punctuation">,</span> <span class="token keyword">long</span> target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>low<span class="token operator">></span>high<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">long</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>low<span class="token operator">+</span>high<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>mid<span class="token operator">*</span>mid <span class="token operator">></span> target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">binary_search</span><span class="token punctuation">(</span>low<span class="token punctuation">,</span> mid<span class="token number">-1</span><span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>mid<span class="token operator">*</span>mid<span class="token operator">&lt;</span>target<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">binary_search</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>high<span class="token punctuation">,</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode680"><a href="#LeetCode680" class="headerlink" title="LeetCode680:"></a>LeetCode680:</h2><p>题目描述:</p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-5"><a href="#题解思路：-5" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<h3 id="代码如下：-5"><a href="#代码如下：-5" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><font face="宋体">给定一个非空字符串 <code>s</code>，<strong>最多</strong>删除一个字符。判断是否能成为回文字符串。</font></p>
+<p><img src="/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413203328805.png" alt="image-20210413203328805"></p>
+<h3 id="题解思路：-5"><a href="#题解思路：-5" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">利用双指针，一个指向字符串的最左边，一个指向字符串的最右边，分别向中间遍历，若全部能够遍历完并且左边指针指向的字符时刻等于右边指针指向的字符，则原字符串是回文。若在其中某一步发现两者不相等，则考虑剩下部分的字符是否是回文，若是，则满足题目要求，在删除一个字符的情况下还是回文，否则就不满足题目要求。</font></p>
+<h3 id="代码如下：-5"><a href="#代码如下：-5" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">validPalindrome</span><span class="token punctuation">(</span>string<span class="token operator">&amp;</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">bool</span> t <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> low<span class="token punctuation">,</span> j <span class="token operator">=</span> high<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> j<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> s<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">bool</span> <span class="token function">validPalindrome</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> high <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>low<span class="token operator">&lt;=</span>high<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">char</span> c_left <span class="token operator">=</span> s<span class="token punctuation">[</span>low<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">char</span> c_right <span class="token operator">=</span> s<span class="token punctuation">[</span>high<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>c_left <span class="token operator">==</span> c_right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                low<span class="token operator">++</span><span class="token punctuation">;</span>
+                high<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token function">validPalindrome</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> low<span class="token punctuation">,</span>high<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token function">validPalindrome</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span>low<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode524"><a href="#LeetCode524" class="headerlink" title="LeetCode524:"></a>LeetCode524:</h2><p>题目描述:</p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-6"><a href="#题解思路：-6" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<h3 id="代码如下：-6"><a href="#代码如下：-6" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="LeetCode340"><a href="#LeetCode340" class="headerlink" title="LeetCode340:"></a>LeetCode340:</h2><p>题目描述:</p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-7"><a href="#题解思路：-7" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<h3 id="代码如下：-7"><a href="#代码如下：-7" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
+<p><font face="宋体">给定一个字符串和一个字符串字典，找到字典里面最长的字符串，该字符串可以通过删除给定字符串的某些字符来得到。如果答案不止一个，返回长度最长且字典顺序最小的字符串。如果答案不存在，则返回空字符串。</font></p>
+<h3 id="题解思路：-6"><a href="#题解思路：-6" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">这道题细想一下还是挺简单的，就是要找到字典中的字符串中的字符是否能在目标字符串找到，可以使用for循环一一进行对比。如果找到了字典中的某个字符串在目标字符串中，就记录下来，并对字典中剩下的字符串进行相同的操作，若也发现了符合要求的字符串，就与之前记录的字符串进行对比，最终选择最长的字符串或者是等长的但是字符顺序最小的字符串作为输出即可。</font></p>
+<h3 id="代码如下：-6"><a href="#代码如下：-6" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    string <span class="token function">findLongestWord</span><span class="token punctuation">(</span>string s<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token operator">&amp;</span> dictionary<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        string str <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>string s_d<span class="token operator">:</span> dictionary<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> s_d<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> s_d<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    j<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">==</span>s_d<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>s_d<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>s_d<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span>str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>s_d<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        str <span class="token operator">=</span> s_d<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> str<span class="token punctuation">;</span>
+        
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="LeetCode340"><a href="#LeetCode340" class="headerlink" title="LeetCode340:"></a>LeetCode340:</h2><blockquote>
+<p>未取得会员，无法查看题目，待更……</p>
+</blockquote>
+<p>题目描述:</p>
+<p><font face="宋体">待更……</font></p>
+<h3 id="题解思路：-7"><a href="#题解思路：-7" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">待更…….</font></p>
+<h3 id="代码如下：-7"><a href="#代码如下：-7" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//待更......</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
@@ -1190,7 +1355,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.8k</span>&nbsp;字
+                class="white-color">8.1k</span>&nbsp;字
             
             
             
