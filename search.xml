@@ -2,10 +2,10 @@
 <search>
   <entry>
     <title>双指针类</title>
-    <url>/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/</url>
+    <url>/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="LeetCode167"><a href="#LeetCode167" class="headerlink" title="LeetCode167:"></a>LeetCode167:</h2><p>题目描述:</p>
 <p><font face="宋体">给定一个已按照 <strong>升序排列</strong> 的整数数组 <code>numbers</code> ，请你从数组中找出两个数满足相加之和等于目标数 <code>target</code> 。</font></p>
-<p><img src="/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413160616668.png" alt="image-20210413160616668"></p>
+<p><img src="/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413160616668.png" alt="image-20210413160616668"></p>
 <h3 id="题解思路："><a href="#题解思路：" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">可以使用双指针，一个指针指向数组的最左边，一个指向最右边，若两者指向的元素相加大于目标数，则将指向右边的指针减一，同理，若两者指向的元素相加小于目标数，则将指向左边的指针加一。</font></p>
 <h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -30,7 +30,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode88"><a href="#LeetCode88" class="headerlink" title="LeetCode88:"></a>LeetCode88:</h2><p>题目描述:</p>
 <p><font face="宋体">给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。你可以假设 nums1 的空间大小等于 m + n，这样它就有足够的空间保存来自 nums2 的元素。</font></p>
-<p><img src="/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413160529345.png" alt="image-20210413160529345"></p>
+<p><img src="/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413160529345.png" alt="image-20210413160529345"></p>
 <h3 id="题解思路：-1"><a href="#题解思路：-1" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">要将两个有序的数组有序分配到nums1，可以使用双指针的方法，但是在本题目上还需要一个指针去指向赋值的位置index，m和n分别作为nums1和nums2的指针，比较并将较大的数放入索引为index的位置。</font></p>
 <h3 id="代码如下：-1"><a href="#代码如下：-1" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -108,7 +108,7 @@
 <ul>
 <li><font face="宋体">注意：如果 s 中存在这样的子串，我们保证它是唯一的答案。</font></li>
 </ul>
-<p><img src="/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413171853222.png" alt="image-20210413171853222"></p>
+<p><img src="/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413171853222.png" alt="image-20210413171853222"></p>
 <h3 id="题解思路：-3"><a href="#题解思路：-3" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <h3 id="代码如下：-3"><a href="#代码如下：-3" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp">
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -189,7 +189,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode680"><a href="#LeetCode680" class="headerlink" title="LeetCode680:"></a>LeetCode680:</h2><p>题目描述:</p>
 <p><font face="宋体">给定一个非空字符串 <code>s</code>，<strong>最多</strong>删除一个字符。判断是否能成为回文字符串。</font></p>
-<p><img src="/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413203328805.png" alt="image-20210413203328805"></p>
+<p><img src="/booligan/2021/04/13/LeetCode/%E5%8F%8C%E6%8C%87%E9%92%88%E7%B1%BB/image-20210413203328805.png" alt="image-20210413203328805"></p>
 <h3 id="题解思路：-5"><a href="#题解思路：-5" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">利用双指针，一个指向字符串的最左边，一个指向字符串的最右边，分别向中间遍历，若全部能够遍历完并且左边指针指向的字符时刻等于右边指针指向的字符，则原字符串是回文。若在其中某一步发现两者不相等，则考虑剩下部分的字符是否是回文，若是，则满足题目要求，在删除一个字符的情况下还是回文，否则就不满足题目要求。</font></p>
 <h3 id="代码如下：-5"><a href="#代码如下：-5" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -265,9 +265,9 @@
   </entry>
   <entry>
     <title>贪心算法类</title>
-    <url>/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/</url>
+    <url>/booligan/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="LeetCode435"><a href="#LeetCode435" class="headerlink" title="LeetCode435:"></a>LeetCode435:</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h3><p><font face="宋体">给定一个区间的集合，找到需要移除区间的最小数量，使剩余区间互不重叠。</font></p>
-<p><img src="/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/image-20210413093253378.png" alt="image-20210413093253378"></p>
+<p><img src="/booligan/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/image-20210413093253378.png" alt="image-20210413093253378"></p>
 <h3 id="题解思路："><a href="#题解思路：" class="headerlink" title="题解思路："></a>题解思路：</h3><p>按照贪心策略，可以先根据每个区间的结尾数字进行递增排序，然后依次考察前一个区间的结尾数字和后一个区间的起始数字比对大小，若后一个区间的起始数字大于等于前一个区间的结尾数字就保留后一个区间，否则就被剔除，并记录剔除的个数。</p>
 <h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -293,7 +293,7 @@
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode605"><a href="#LeetCode605" class="headerlink" title="LeetCode605:"></a>LeetCode605:</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述:"></a>题目描述:</h3><p><font face="宋体">假设有一个很长的花坛，一部分地块种植了花，另一部分却没有。可是，花不能种植在相邻的地块上，它们会争夺水源，两者都会死去。给你一个整数数组  flowerbed 表示花坛，由若干 0 和 1 组成，其中 0 表示没种植花，1 表示种植了花。另有一个数 n ，能否在不打破种植规则的情况下种入 n 朵花？能则返回 true ，不能则返回 false。</font></p>
-<p><img src="/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/image-20210413101836515.png" alt="image-20210413101836515"></p>
+<p><img src="/booligan/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/image-20210413101836515.png" alt="image-20210413101836515"></p>
 <h3 id="题解思路：-1"><a href="#题解思路：-1" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face>如果第一块地上种植了花，第二块必须是空地，因为要满足题目要求，不能在相邻的两块地上种植花。若要种植花，必须考虑第三块地是否是空地，若下一块（也就是第四块）也是空地或者第三块就是最后一块空白土地，直接在第三块上种植。为了简化解题的过程，我们直接考虑第一块地为空地的情况，若第一块不是空地，则将指针指向第二块空地，然后再考虑下一块地是否是最后一块地或者下下块地也是空地，就种植花。</font></p>
 <h3 id="代码如下：-1"><a href="#代码如下：-1" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -319,7 +319,7 @@
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode452："><a href="#LeetCode452：" class="headerlink" title="LeetCode452："></a>LeetCode452：</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述:"></a>题目描述:</h3><p><font face="宋体">在二维空间中有许多球形的气球。对于每个气球，提供的输入是水平方向上，气球直径的开始和结束坐标。由于它是水平的，所以纵坐标并不重要，因此只要知道开始和结束的横坐标就足够了。开始坐标总是小于结束坐标。一支弓箭可以沿着 x 轴从不同点完全垂直地射出。在坐标 x 处射出一支箭，若有一个气球的直径的开始和结束坐标为 x_start，x_end， 且满足  x_start ≤ x ≤ x_end，则该气球会被引爆。可以射出的弓箭的数量没有限制。 弓箭一旦被射出之后，可以无限地前进。我们想找到使得所有气球全部被引爆，所需的弓箭的最小数量。给你一个数组 points ，其中 points [i] = [x_start,x_end] ，返回引爆所有气球所必须射出的最小弓箭数。</font></p>
 <h3 id="题解思路：-2"><a href="#题解思路：-2" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">根据题目意思，我们先将这些气球的截止坐标按照递增进行排序，结尾数字越小越靠前。按照贪心规则，越靠前的气球越容易成为箭刺中的第一个目标，为了能够尽可能多的射中气球，调整箭的位置越靠近目标（要射中的第一个气球）的右侧，越容易射中更多的气球。看下面这张图，若箭从1位置射出只能射中黄色的气球，若将箭调整到2位置处，就可以射中黄色和深蓝色两个气球。后面射出的箭调整同理。</font></p>
-<p><img src="/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/image-20210413111554157.png" alt="image-20210413111554157"></p>
+<p><img src="/booligan/2021/04/12/LeetCode/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%B1%BB/image-20210413111554157.png" alt="image-20210413111554157"></p>
 <h3 id="代码如下：-2"><a href="#代码如下：-2" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">int</span> <span class="token function">findMinArrowShots</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> points<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -356,7 +356,7 @@
   </entry>
   <entry>
     <title>并查集</title>
-    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+    <url>/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
     <content><![CDATA[<h2 id="并查集的定义"><a href="#并查集的定义" class="headerlink" title="并查集的定义"></a>并查集的定义</h2><p><font face="宋体">并查集是一种树型的数据结构，并可以高效的执行下面两种操作：</font></p>
 <ul>
 <li><font face="宋体">1. 查询两个元素是否属于同一分组；</font></li>
@@ -449,7 +449,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
+<h4 id="运行的结果："><a href="#运行的结果：" class="headerlink" title="运行的结果："></a>运行的结果：</h4><p><img src="/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B9%B6%E6%9F%A5%E9%9B%86/1617851508746.png" alt="Alt text"><br><font face="宋体">可以清楚的看到，在实现unionGroup时候，要想让所有的数据都在一个分组，则需要调用N-1次unionGroup方法才行，而每一次的unionGroup方法里面又有一个for循环来遍历所有的元素，因此整个算法的时间复杂度是O(N^2)，如果要解决大规模问题显然是不合适的。</font></p>
 <h4 id="改进的find和unionGroup方法"><a href="#改进的find和unionGroup方法" class="headerlink" title="改进的find和unionGroup方法"></a>改进的find和unionGroup方法</h4><p><font face="宋体">为了提升unionGroup的性能，需要重新设计find方法和union方法。</font></p>
 <ul>
 <li><font face="宋体">仍然让eleAndGroup数组的索引作为某个结点的元素；</font></li>
@@ -644,8 +644,216 @@
       </tags>
   </entry>
   <entry>
+    <title>谈谈快速排序和归并排序</title>
+    <url>/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<blockquote>
+<p><font face="宋体">参考了《算法图解》和黑马的数据结构与算法的笔记。</font></p>
+</blockquote>
+<h2 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h2><p><font face="宋体">快速排序是对冒泡排序的改进，是一种典型的分而治之(divide and conquer, D&amp;C)算法。其思想是：在任意选取一个基准元素后，遍历一遍所有的元素并将所有元素分成独立的两个部分，其中一部分的任意一个元素都要比该基准要小，而另外一个组的任意一个元素要比这个基准要大，然后再对这两个部分进行同样的操作：选取基准并交换两边的元素，使得一边的元素都要比基准要小而另外一边要比基准要大，依次类推，最终使得整个队列有序。可以递归进行该操作。</font></p>
+<span id="more"></span>
+<h3 id="排序的原理："><a href="#排序的原理：" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
+<li><font face="宋体">1.首先任意选取一个分界值，能够通过该分界值将所有的元素分成两个独立的部分；</font></li>
+<li><font face="宋体">2.将大于该分界值的所有元素放在数组的右边，而小于该分界值的所有元素放在数组的左边；</font></li>
+<li><font face="宋体">3.然后左右两边的数组又可以独立进行排序，在左侧的数组中任意选取一个分界值，并将该数组中所有大于该分界值的元素放在数组的右边，而小于该分界值的元素放在数组的左边。对于右侧的数组可以同样进行该操作；</font></li>
+<li><font face="宋体">4.重复上面的过程（可以利用递归）。通过递归将左右两侧的数组都排序好后，整个数组也就有序了。</font></li>
+</ul>
+<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
+快速排序的CPP实现
+*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;vector></span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">class</span> <span class="token class-name">QuickSort</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">compare</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">exch</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        T temp <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        v<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> <span class="token function">partion</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> l_left <span class="token operator">=</span> low<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> l_right <span class="token operator">=</span> high <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">compare</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token operator">--</span>l_right<span class="token punctuation">,</span> low<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>l_right <span class="token operator">==</span> low<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">compare</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token operator">++</span>l_left<span class="token punctuation">,</span> low<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>l_left <span class="token operator">==</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>l_left <span class="token operator">&lt;</span> l_right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">exch</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> l_left<span class="token punctuation">,</span> l_right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+
+        <span class="token punctuation">}</span>
+        <span class="token function">exch</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> l_right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> l_right<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>low <span class="token operator">>=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">int</span> pa <span class="token operator">=</span> <span class="token function">partion</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> pa <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> pa <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> high <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">456</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">146</span><span class="token punctuation">,</span><span class="token number">849</span><span class="token punctuation">,</span><span class="token number">158</span><span class="token punctuation">,</span><span class="token number">8169</span><span class="token punctuation">,</span><span class="token number">153</span><span class="token punctuation">,</span><span class="token number">8489</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    QuickSort<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> q<span class="token punctuation">;</span>
+    q<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>iter <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="运行的结果如下："><a href="#运行的结果如下：" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617885506406.png" alt="Alt text"></p>
+<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><p><font face="宋体">归并排序是一种建立在归并操作的有效的排序算法，也是一种典型的D&amp;C算法。其思想是：先将序列拆分成单个元素，然后将元素合并成有序的子序列，再将有序的子序列合并成一个有序的表。</font></p>
+<h3 id="排序的原理：-1"><a href="#排序的原理：-1" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
+<li><font face="宋体">1.尽可能将数据拆分成两个元素相等的子组，并对子组进一步拆分，至每个子组中的元素个数为1；</font></li>
+<li><font face="宋体">2.将相邻的两个子组合并成一个有序的大组；</font></li>
+<li><font face="宋体">3.不断的重复2，直到只有一个组为止。</font><h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3></li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
+归并排序CPP实现
+*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;vector></span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
+<span class="token keyword">class</span> <span class="token class-name">MergeSort</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    T<span class="token operator">*</span> assist<span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> <span class="token function">compare</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> mid<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> l_left <span class="token operator">=</span> low<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> l_right <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> index <span class="token operator">=</span> low<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>l_left <span class="token operator">&lt;=</span> mid <span class="token operator">&amp;&amp;</span> l_right <span class="token operator">&lt;=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">compare</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> l_left<span class="token punctuation">,</span> l_right<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_left<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_right<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>l_left <span class="token operator">&lt;=</span> mid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_left<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>l_right <span class="token operator">&lt;=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_right<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> low<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> high<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> assist<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>low <span class="token operator">>=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>low <span class="token operator">+</span> high<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token function">merge</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+        <span class="token keyword">int</span> high <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        assist <span class="token operator">=</span> <span class="token keyword">new</span> T<span class="token punctuation">[</span>v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">456</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">146</span><span class="token punctuation">,</span><span class="token number">849</span><span class="token punctuation">,</span><span class="token number">158</span><span class="token punctuation">,</span><span class="token number">8169</span><span class="token punctuation">,</span><span class="token number">153</span><span class="token punctuation">,</span><span class="token number">8489</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    MergeSort<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> q<span class="token punctuation">;</span>
+    q<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>iter <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
+<h2 id="快速排序与归并排序的时间复杂度分析"><a href="#快速排序与归并排序的时间复杂度分析" class="headerlink" title="快速排序与归并排序的时间复杂度分析"></a>快速排序与归并排序的时间复杂度分析</h2><p><font face="宋体">归并排序的时间复杂度是O(N<em>logN)。而快速排序在一般情况下的时间复杂度是O(N</em>logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。</font></p>
+<blockquote>
+<font face="宋体">
+那什么是快速排序的糟糕情况呢？</font>
+</blockquote>
+<font face="宋体">
+其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）</font>
+
+
+<p><img src="/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
+<p><font face="宋体">注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）<br></font></p>
+<p><img src="/booligan/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
+<p><font face="宋体">一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。</font></p>
+<blockquote>
+<font face="宋体">
+既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N\* logN)，为什么不考虑一直用归并排序呢？</font>
+</blockquote>
+<p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构与算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>红黑树</title>
-    <url>/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <url>/booligan/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p><font face="宋体">红黑树是基于2-3树思想的内含有红黑链的二叉查找树，并满足以下三种条件：<br></font></p>
 <ul>
 <li><font face="宋体">1. 红色链接必须是左链接；</font></li>
@@ -659,15 +867,15 @@
 <li> <font face="宋体">3. 让h的color属性成为x的color属性；</font></li>
 <li> <font face="宋体">4. 让h的color属性置为红色。</font></li>
 </ul>
-<p><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693263761.png" alt="Alt text"></p>
+<p><img src="/booligan/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693263761.png" alt="Alt text"></p>
 <h4 id="2-右旋"><a href="#2-右旋" class="headerlink" title="2.右旋"></a>2.右旋</h4><p><font face="宋体">当某个结点的左子结点的链接是红色的，而其左子结点的左子结点也是红色的（不满足定义中的第二个条件）则需要对其进行右旋操作。</font><br><font face="宋体"><br>右旋的过程（前提条件当前结点为h，而其左子结点为x）：</font></p>
 <ul>
 <li><font face="宋体">1. 让x的右子结点成为h的左子结点；</font></li>
 <li> <font face="宋体">2. 让h成为x的右子结点；</font></li>
 <li> <font face="宋体">3. 让h的color属性成为x的color属性；</font></li>
-<li> <font face="宋体">4. 让h的color属性置为红色。</font><br><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693449983.png" alt="Alt text"></li>
+<li> <font face="宋体">4. 让h的color属性置为红色。</font><br><img src="/booligan/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693449983.png" alt="Alt text"></li>
 </ul>
-<h4 id="3-颜色反转"><a href="#3-颜色反转" class="headerlink" title="3.颜色反转"></a>3.颜色反转</h4><p><font face="宋体">当某个结点的左子结点的链接是红色的，而其右子结点也是红色的，则需要将其两个子结点的链接设置为黑色，而其父链接设置为红色。</font><br><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693520319.png" alt="Alt text"></p>
+<h4 id="3-颜色反转"><a href="#3-颜色反转" class="headerlink" title="3.颜色反转"></a>3.颜色反转</h4><p><font face="宋体">当某个结点的左子结点的链接是红色的，而其右子结点也是红色的，则需要将其两个子结点的链接设置为黑色，而其父链接设置为红色。</font><br><img src="/booligan/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693520319.png" alt="Alt text"></p>
 <h3 id="代码块："><a href="#代码块：" class="headerlink" title="代码块："></a>代码块：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
 红黑树的CPP实现
 */</span>
@@ -876,7 +1084,7 @@
 <span class="token punctuation">}</span>
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h4><p><img src="/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693579337.png" alt="Alt text"></p>
+<h4 id="执行结果如下："><a href="#执行结果如下：" class="headerlink" title="执行结果如下："></a>执行结果如下：</h4><p><img src="/booligan/2021/04/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E7%BA%A2%E9%BB%91%E6%A0%91/1617693579337.png" alt="Alt text"></p>
 ]]></content>
       <categories>
         <category>数据结构与算法</category>
@@ -887,7 +1095,7 @@
   </entry>
   <entry>
     <title>谈谈贪心算法</title>
-    <url>/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
+    <url>/booligan/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<blockquote>
 <p>参考博客“从零开始学贪心算法”，主要是为了学习并记录这个过程，博客地址为：<a href="https://blog.csdn.net/qq_32400847/article/details/51336300?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161819966416780357242016%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161819966416780357242016&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-51336300.first_rank_v2_pc_rank_v29&amp;utm_term=%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">https://blog.csdn.net/qq_32400847/article/details/51336300?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522161819966416780357242016%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=161819966416780357242016&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-51336300.first_rank_v2_pc_rank_v29&amp;utm_term=%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95</a></p>
 </blockquote>
@@ -992,7 +1200,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="运行的结果如下所示："><a href="#运行的结果如下所示：" class="headerlink" title="运行的结果如下所示："></a>运行的结果如下所示：</h5><p><img src="/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20210412175109507.png" alt="image-20210412175109507"></p>
+<h5 id="运行的结果如下所示："><a href="#运行的结果如下所示：" class="headerlink" title="运行的结果如下所示："></a>运行的结果如下所示：</h5><p><img src="/booligan/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20210412175109507.png" alt="image-20210412175109507"></p>
 <h3 id="问题2：-钱币找零"><a href="#问题2：-钱币找零" class="headerlink" title="问题2： 钱币找零"></a>问题2： 钱币找零</h3><p><font face="宋体">钱币找零也是我们生活当中经常遇到的问题，除了特别的要求，我们一般都是尽量用面额较大的钱币去处理找零问题。而且贪心算法也是这种思想，每一步用尽可能大的面额纸币。</font></p>
 <h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
 钱币找零
@@ -1029,7 +1237,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h5><p><img src="/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20210412210023292.png" alt="image-20210412210023292"></p>
+<h5 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h5><p><img src="/booligan/2021/04/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/image-20210412210023292.png" alt="image-20210412210023292"></p>
 <blockquote>
 <p>待更……</p>
 </blockquote>
@@ -1042,222 +1250,14 @@
       </tags>
   </entry>
   <entry>
-    <title>谈谈快速排序和归并排序</title>
-    <url>/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<blockquote>
-<p><font face="宋体">参考了《算法图解》和黑马的数据结构与算法的笔记。</font></p>
-</blockquote>
-<h2 id="快速排序（Quick-Sort）"><a href="#快速排序（Quick-Sort）" class="headerlink" title="快速排序（Quick Sort）"></a>快速排序（Quick Sort）</h2><p><font face="宋体">快速排序是对冒泡排序的改进，是一种典型的分而治之(divide and conquer, D&amp;C)算法。其思想是：在任意选取一个基准元素后，遍历一遍所有的元素并将所有元素分成独立的两个部分，其中一部分的任意一个元素都要比该基准要小，而另外一个组的任意一个元素要比这个基准要大，然后再对这两个部分进行同样的操作：选取基准并交换两边的元素，使得一边的元素都要比基准要小而另外一边要比基准要大，依次类推，最终使得整个队列有序。可以递归进行该操作。</font></p>
-<span id="more"></span>
-<h3 id="排序的原理："><a href="#排序的原理：" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
-<li><font face="宋体">1.首先任意选取一个分界值，能够通过该分界值将所有的元素分成两个独立的部分；</font></li>
-<li><font face="宋体">2.将大于该分界值的所有元素放在数组的右边，而小于该分界值的所有元素放在数组的左边；</font></li>
-<li><font face="宋体">3.然后左右两边的数组又可以独立进行排序，在左侧的数组中任意选取一个分界值，并将该数组中所有大于该分界值的元素放在数组的右边，而小于该分界值的元素放在数组的左边。对于右侧的数组可以同样进行该操作；</font></li>
-<li><font face="宋体">4.重复上面的过程（可以利用递归）。通过递归将左右两侧的数组都排序好后，整个数组也就有序了。</font></li>
-</ul>
-<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
-快速排序的CPP实现
-*/</span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;vector></span></span>
-
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
-<span class="token keyword">class</span> <span class="token class-name">QuickSort</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">bool</span> <span class="token function">compare</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">exch</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        T temp <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        v<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">int</span> <span class="token function">partion</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> l_left <span class="token operator">=</span> low<span class="token punctuation">;</span>
-        <span class="token keyword">int</span> l_right <span class="token operator">=</span> high <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">compare</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token operator">--</span>l_right<span class="token punctuation">,</span> low<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>l_right <span class="token operator">==</span> low<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">compare</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> <span class="token operator">++</span>l_left<span class="token punctuation">,</span> low<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>l_left <span class="token operator">==</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>l_left <span class="token operator">&lt;</span> l_right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token function">exch</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> l_left<span class="token punctuation">,</span> l_right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                <span class="token keyword">break</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-
-
-        <span class="token punctuation">}</span>
-        <span class="token function">exch</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> l_right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">return</span> l_right<span class="token punctuation">;</span>
-
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>low <span class="token operator">>=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">int</span> pa <span class="token operator">=</span> <span class="token function">partion</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> pa <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> pa <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> high <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-
-        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">456</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">146</span><span class="token punctuation">,</span><span class="token number">849</span><span class="token punctuation">,</span><span class="token number">158</span><span class="token punctuation">,</span><span class="token number">8169</span><span class="token punctuation">,</span><span class="token number">153</span><span class="token punctuation">,</span><span class="token number">8489</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    QuickSort<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> q<span class="token punctuation">;</span>
-    q<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
-        cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>iter <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="运行的结果如下："><a href="#运行的结果如下：" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617885506406.png" alt="Alt text"></p>
-<h2 id="归并排序（Merge-Sort）"><a href="#归并排序（Merge-Sort）" class="headerlink" title="归并排序（Merge Sort）"></a>归并排序（Merge Sort）</h2><p><font face="宋体">归并排序是一种建立在归并操作的有效的排序算法，也是一种典型的D&amp;C算法。其思想是：先将序列拆分成单个元素，然后将元素合并成有序的子序列，再将有序的子序列合并成一个有序的表。</font></p>
-<h3 id="排序的原理：-1"><a href="#排序的原理：-1" class="headerlink" title="排序的原理："></a>排序的原理：</h3><ul>
-<li><font face="宋体">1.尽可能将数据拆分成两个元素相等的子组，并对子组进一步拆分，至每个子组中的元素个数为1；</font></li>
-<li><font face="宋体">2.将相邻的两个子组合并成一个有序的大组；</font></li>
-<li><font face="宋体">3.不断的重复2，直到只有一个组为止。</font><h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3></li>
-</ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*
-归并排序CPP实现
-*/</span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;vector></span></span>
-
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
-<span class="token keyword">class</span> <span class="token class-name">MergeSort</span> <span class="token punctuation">{</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    T<span class="token operator">*</span> assist<span class="token punctuation">;</span>
-    <span class="token keyword">bool</span> <span class="token function">compare</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> mid<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> l_left <span class="token operator">=</span> low<span class="token punctuation">;</span>
-        <span class="token keyword">int</span> l_right <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> index <span class="token operator">=</span> low<span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>l_left <span class="token operator">&lt;=</span> mid <span class="token operator">&amp;&amp;</span> l_right <span class="token operator">&lt;=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">compare</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> l_left<span class="token punctuation">,</span> l_right<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_left<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_right<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>l_left <span class="token operator">&lt;=</span> mid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_left<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>l_right <span class="token operator">&lt;=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            assist<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">[</span>l_right<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> low<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> high<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            v<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> assist<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">int</span> low<span class="token punctuation">,</span> <span class="token keyword">int</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>low <span class="token operator">>=</span> high<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>low <span class="token operator">+</span> high<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> mid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token function">merge</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> low <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
-        <span class="token keyword">int</span> high <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        assist <span class="token operator">=</span> <span class="token keyword">new</span> T<span class="token punctuation">[</span>v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> low<span class="token punctuation">,</span> high<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">456</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">146</span><span class="token punctuation">,</span><span class="token number">849</span><span class="token punctuation">,</span><span class="token number">158</span><span class="token punctuation">,</span><span class="token number">8169</span><span class="token punctuation">,</span><span class="token number">153</span><span class="token punctuation">,</span><span class="token number">8489</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-    MergeSort<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> q<span class="token punctuation">;</span>
-    q<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator iter <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter <span class="token operator">!=</span> a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> iter<span class="token operator">++</span><span class="token punctuation">)</span>
-        cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>iter <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
-    cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="运行的结果如下：-1"><a href="#运行的结果如下：-1" class="headerlink" title="运行的结果如下："></a>运行的结果如下：</h4><p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887489715.png" alt="Alt text"></p>
-<h2 id="快速排序与归并排序的时间复杂度分析"><a href="#快速排序与归并排序的时间复杂度分析" class="headerlink" title="快速排序与归并排序的时间复杂度分析"></a>快速排序与归并排序的时间复杂度分析</h2><p><font face="宋体">归并排序的时间复杂度是O(N<em>logN)。而快速排序在一般情况下的时间复杂度是O(N</em>logN)，但是在比较糟糕的情况下的时间复杂度是O(N^2)。</font></p>
-<blockquote>
-<font face="宋体">
-那什么是快速排序的糟糕情况呢？</font>
-</blockquote>
-<font face="宋体">
-其实，正如前面看到的，快速排序依赖你所选取的基准值，假如你每次选取的基准值都是最小的那一个，最后分组的时候，只有一边有元素，而另外一边没有元素。（看下面这张图）</font>
-
-
-<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617887997615.png" alt="Alt text"></p>
-<p><font face="宋体">注意，数组并没有像如期那样分为两部分，相反，其中一个数组永远都是空的，这就会导致调用栈非常长。在这种情况下，栈长为O(N)，在调用栈的每一层都涉及O(N)个元素，因此此时的时间复杂度是O(N^2)。（看下面这张图）<br></font></p>
-<p><img src="/2021/04/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%92%8C%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/1617888304641.png" alt="Alt text"></p>
-<p><font face="宋体">一般情况下，选取的元素能够将数组分为两个部分，此时栈长为O(logN)，因此此时的时间复杂度为O(N*logN)。</font></p>
-<blockquote>
-<font face="宋体">
-既然快排会存在这种糟糕的情况，而归并排序的时间复杂度一直是O(N\* logN)，为什么不考虑一直用归并排序呢？</font>
-</blockquote>
-<p><font face="宋体">其实，在一般情况下，虽然快速排序和归并排序的时间复杂度一直是O(N<em>logN)，但是快速排序和归并排序之间还相差了一个常量时间，也就是前面的系数O(l</em>N*logN)。快速排序的l要比归并排序的l要小，因此，综合来看还是快速排序的速度要更快一些。</font></p>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>数据结构与算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二分查找类</title>
-    <url>/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/</url>
+    <url>/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="算法解释"><a href="#算法解释" class="headerlink" title="算法解释"></a>算法解释</h2><p><font face="宋体">二分查找也叫二分法或者折半查找，每次将待查找到的区间分成两个部分，只取其中一个部分进行查找，可以将查找的时间复杂度大大降低。对于一个长度为O(N)的数组，采用二分查找的时间复杂度是O(logN)。但是二分查找只能应用于有序的数组。</font></p>
 <h2 id="LeetCode69"><a href="#LeetCode69" class="headerlink" title="LeetCode69:"></a>LeetCode69:</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述:"></a>题目描述:</h3><p><font face="宋体">实现 int sqrt(int x) 函数。计算并返回 x 的平方根，其中 x 是非负整数。由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210414101142723.png" alt="image-20210414101142723"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210414101142723.png" alt="image-20210414101142723"></p>
 <h3 id="题解思路："><a href="#题解思路：" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">直接使用二分查找来解决这个题目是非常不错的一种选择。这里提供了两种实现二分查找的方法，一个是使用循环，还有一个是使用递归。</font></p>
 <p><font face="宋体">其实这道题还有一个解法，使用牛顿迭代法。这道题可以看成是$h(x)=x^2-a=0$</font>，函数的切线斜率是$2x$，代入$x=h(x)/2x$中，得到迭代公式为$x_{n+1}=(x_{n}+a/x_{n})/2$。</p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210414105521948.png" alt="image-20210414105521948"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210414105521948.png" alt="image-20210414105521948"></p>
 <h3 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*循环实现二分查找*/</span>
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -1341,7 +1341,7 @@ public:
 };
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode34"><a href="#LeetCode34" class="headerlink" title="LeetCode34:"></a>LeetCode34:</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述:"></a>题目描述:</h3><p><font face="宋体">给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。如果数组中不存在目标值 target，返回 [-1, -1]。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210414105851963.png" alt="image-20210414105851963"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210414105851963.png" alt="image-20210414105851963"></p>
 <h3 id="题解思路：-1"><a href="#题解思路：-1" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">其实这道题细想一下思想还是挺简单的，可以直接定义两个指针，一个指向数组的最左边，一个指向数组的最右边，分别考察具体情况调整指针。</font></p>
 <blockquote>
 <p>类二分查找方法有待考虑……</p>
@@ -1447,7 +1447,7 @@ public:
 </li>
 </ul>
 <p><font face="宋体">给你一个元素值<strong>互不相同</strong>的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 <strong>最小元素</strong> 。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415105137231.png" alt="leetcode153"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415105137231.png" alt="leetcode153"></p>
 <h3 id="题解思路：-3"><a href="#题解思路：-3" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">这个题是leetcode中被标注medium类型的题目，其实细想一下，就是找到这个数组中的最小值即可。那问题就变得容易了，直接声明一个最小值的指针，初始指向数组的第一个，然后遍历完数组中的所有元素，记录最小值所在的索引即可。（方法一）</font></p>
 <p><font face="宋体">我们再来看看这个题想考什么，首先应该明确的是在未反转时候是有序的（递增），翻转几次就是向右循环几次。这道题还是可以用二分查找来解决，在用二分查找时，需要始终将目标值（这里是最小值）套住，并不断收缩左边界或右边界。如何进行二分查找呢？</font></p>
 <ul>
@@ -1459,7 +1459,7 @@ public:
 <p>参考LeetCode_153中，armeria对于此题的题解。</p>
 </blockquote>
 <p><font face="宋体">对于本题而言，翻转的数组只会有下面几种情况（左值是数组最左边的值，右值是数组最右边的值，而且在数组有翻转的时候，左值一直是大于右值的）：</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415160054652.png" alt="image-20210415160054652"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415160054652.png" alt="image-20210415160054652"></p>
 <p><font face="宋体">看上面这张图，如果选择中值和左值进行比较，当出现1和3时，就无法确定最小值是在哪一边了，而与右值比较时，情况就会变得简单。到底能不能用最左边的值进行比较呢？答案是可以的，但不是找最小值了，而是找最大值。当然，对于这个题目而言，最大值往往跟最小值是挨着的，如果找到了最大值，索引后偏一位就是最小值的索引。见方法三。</font></p>
 <h3 id="代码如下：-3"><a href="#代码如下：-3" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*方法一*/</span>
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
@@ -1523,7 +1523,7 @@ public:
 </li>
 </ul>
 <p><font face="宋体">给你一个可能存在 <strong>重复</strong> 元素值的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415102834651.png" alt="leetcode_154"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415102834651.png" alt="leetcode_154"></p>
 <h3 id="题解思路：-4"><a href="#题解思路：-4" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">这个题是leetcode中被标注hard类型的题目，其实细想一下，就是找到这个数组中的最小值即可。那问题就变得容易了，直接声明一个最小值的指针，初始指向数组的第一个，然后遍历完数组中的所有元素，记录最小值所在的索引即可。（方法一）</font></p>
 <p><font face="宋体">这道题在基于leetcode_153上添加了数组可能有重复值的情况，按照上一题的处理方法，中值大于右值在右边寻找最小值，当中值小于右值时在左边寻找最小值，如何处理中值等于右值的情况呢？其实，可以看上面的示例2，当中值等于右值时的情况为：$[0, 1, 2, 2, 2]$，最小值是在左边的，因此只需要将右边界减一即可。见方法二。</font></p>
 <blockquote>
@@ -1585,7 +1585,7 @@ public:
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode540（有序数组中的单一元素）"><a href="#LeetCode540（有序数组中的单一元素）" class="headerlink" title="LeetCode540（有序数组中的单一元素）:"></a>LeetCode540（有序数组中的单一元素）:</h2><h3 id="题目描述（中等）"><a href="#题目描述（中等）" class="headerlink" title="题目描述（中等）:"></a>题目描述（中等）:</h3><p><font face="宋体">给定一个只包含整数的有序数组，每个元素都会出现两次，唯有一个数只会出现一次，找出这个数。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415201427573.png" alt="image-20210415201427573"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415201427573.png" alt="image-20210415201427573"></p>
 <h3 id="题解思路：-5"><a href="#题解思路：-5" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">这道题如果没有限制时间复杂度$O(logN)$，有多种方法可以求解，首先最容易想到的是直接前后对比，每次递增两个位置，如果发现前后的元素不相等，直接返回该元素。其实还有一种解法，就是采用<strong>异或操作</strong>，因为异或操作存在几个性质。</font></p>
 <ul>
 <li><font face="宋体">满足交换律和结合律；</font></li>
@@ -1663,27 +1663,27 @@ public:
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="LeetCode4（寻找两个正序数组的中位数）"><a href="#LeetCode4（寻找两个正序数组的中位数）" class="headerlink" title="LeetCode4（寻找两个正序数组的中位数）:"></a>LeetCode4（寻找两个正序数组的中位数）:</h2><h3 id="题目描述（困难）"><a href="#题目描述（困难）" class="headerlink" title="题目描述（困难）:"></a>题目描述（困难）:</h3><p><font face="宋体">给定两个大小分别为 <code>m</code> 和 <code>n</code> 的正序（从小到大）数组 <code>nums1</code> 和 <code>nums2</code>。请你找出并返回这两个正序数组的 <strong>中位数</strong> 。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415201457108.png" alt="image-20210415201457108"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210415201457108.png" alt="image-20210415201457108"></p>
 <h3 id="题解思路：-6"><a href="#题解思路：-6" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">方法一：参考了leetcode_88题的思路，让两个有序的数组合并成一个新的有序的数组，然后再求解中位数，但是时间复杂度有点高。</font></p>
 <p><font face="宋体">方法二：这道题其实可以看成是求第k小的数的一种特例。</font></p>
 <blockquote>
 <p>参考windliang对于该题的题解</p>
 </blockquote>
 <p><font face="宋体">假设我们要对$nums1=[1,3,4,9]$和$nums2=[1,2,3,4,5,6,7,8,9,10]$这两个数组中求取第k=7小的元素。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416101144459.png" alt="image-20210416101144459"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416101144459.png" alt="image-20210416101144459"></p>
 <p><font face="宋体">看上面这张图，我们要分别比较这两个数组中的第k/2位，nums1中对应的是4，nums2对应的是3，由于3&lt;4则删除nums2中前k/2位元素，并让k减去被排除的元素个数等于4。直接比较剩下的数组中的元素$nums1=[1,3,4,9]$和$nums2=[4,5,6,7,8,9,10]$</font>。</p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416101734328.png" alt="image-20210416101734328"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416101734328.png" alt="image-20210416101734328"></p>
 <p><font face="宋体">看上面这张图，现在的nums2是排除了元素1,2,3的，因此现在的起始位置是元素4。现在分别比较两个数组的第k/2=2位的数，在nums1中是3，nums2中是5，由于3&lt;5则删除nums1中前k/2位元素。直接比较剩下的数组中的元素$nums1=[4,9]$和$nums2=[4,5,6,7,8,9,10]$。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416102415655.png" alt="image-20210416102415655"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416102415655.png" alt="image-20210416102415655"></p>
 <p><font face="宋体">看上图，现在k=2的，因为nums1删除了2位数字1,3。k/2=1，直接比较两个数组的第一位，但是在这种情况下，就有4=4的情形出现了，其实我们可以令4&gt;4，随便删除哪个数组中的4就可以了。然后最终的结果还是取到了4。也就是第7小的数字是4。</font></p>
 <blockquote>
 <p> <font face="宋体"><strong>如果k/2大于其中一个数组的长度该怎么办？</strong></font></p>
 </blockquote>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416102957766.png" alt="image-20210416102957766"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416102957766.png" alt="image-20210416102957766"></p>
 <p><font face="宋体">直接让第一个数组的指针指向最后一位元素就可以了，当这两个数被排除后，再求取长的数组的第5位就行了。</font></p>
 <p><font face="宋体"><strong>方法三：</strong>回归正题了，既然这道题还是在考二分查找。那我们该如何去进行二分查找呢？先留着这个问题，我们看看如何解决这道题。</font></p>
 <p><font face="宋体">如果是一个有序的数组的话，就很容易了，直接找到数组的中间位置就可以求出答案。那能不能把两个数组对等的看成一个数组呢？看下面这张图。</font></p>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416145709375.png" alt="image-20210416145709375"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416145709375.png" alt="image-20210416145709375"></p>
 <p><font face="宋体">如果能找到一个平衡线，能将两个数组的两边分成大致相等的两部分（可能存在奇数位导致不能均分），然后让平衡线的左边的最大值恒小于右边的最小值，那问题就可以迎刃而解了。如果数组是偶数，中位数就等于左边的最大值和右边最小值的平均，如果是奇数，且左边的数量要比右边多一个，那中位数就是左边的最大值。</font></p>
 <p><font face="宋体">将i的左边和j的左边共同组成“左半部分”，将i的右边和j的右边共同组成“右半部分”。</font></p>
 <ul>
@@ -1702,11 +1702,11 @@ public:
 <ul>
 <li><font face="宋体">nums1（A）数组所有元素都在右边，若是均分（数组长度为偶数），则左边的最大值就是nums2[j-1]，右边的最小值是$min(nums1[i],nums2[j])$，中位数就是两者取平均，否则就是左边的最大值。</font></li>
 </ul>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416153249231.png" alt="image-20210416153249231"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416153249231.png" alt="image-20210416153249231"></p>
 <ul>
 <li><font face="宋体">nums1（A）数组所有元素都在左边，若是均分（数组长度为偶数），则左边的最大值就是$max(nums1[i-1],nums2[j-1])$，右边的最小值是nums2[j]，则中位数就是两者取平均，否则就是左边的最大值。</font></li>
 </ul>
-<p><img src="/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416153956874.png" alt="image-20210416153956874"></p>
+<p><img src="/booligan/2021/04/14/LeetCode/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%B1%BB/image-20210416153956874.png" alt="image-20210416153956874"></p>
 <p><font face="宋体">现在再来看二分查找，二分查找的目的就是为了寻找合适的i，看方法三代码实现部分即可。</font></p>
 <h3 id="代码如下：-6"><a href="#代码如下：-6" class="headerlink" title="代码如下："></a>代码如下：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*方法一：参考leetcode_88题的思路*/</span>
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
