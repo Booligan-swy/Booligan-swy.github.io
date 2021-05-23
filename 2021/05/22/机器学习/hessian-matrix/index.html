@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="谈谈DFS, WyShen">
+    <meta name="keywords" content="hessian matrix, WyShen">
     <meta name="description" content="仅仅是记载自己所学习的过程和内容......">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>谈谈DFS | WyShen</title>
+    <title>hessian matrix | WyShen</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -267,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">谈谈DFS</h1>
+                    <h1 class="description center-align post-title">hessian matrix</h1>
                 </div>
             </div>
         </div>
@@ -388,8 +388,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">数据结构与算法</span>
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
                             </a>
                         
                     </div>
@@ -400,8 +400,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                数据结构与算法
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
                             </a>
                         
                     </div>
@@ -413,21 +413,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-28
+                    2021-05-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-28
+                    2021-05-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2
+                    390
                 </div>
                 
 
@@ -449,9 +449,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>待更…</p>
-</blockquote>
+                <h1 id="Hessian矩阵："><a href="#Hessian矩阵：" class="headerlink" title="Hessian矩阵："></a>Hessian矩阵：</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p><font face="宋体">是一个多元函数的二阶偏导数构成的方阵，描述了函数的局部曲率。</font></p>
+<p>假设一元函数$f(x)$在$x_{0}$点的某个邻域内具有任意阶导数，则$f(x)$在该点的泰勒展开式为：<br>$$<br>f(x)=f(x_{0})+f’(x_{0})\Delta x+1/2*f’’(x_{0})(\Delta x)^2+…<br>$$<br>对于二元函数$f(x_1,x_2)$在$X^{(0)}=(x^{(0)}_1,x^{(0)}_2)$点处的泰勒展开式为：<br>$$<br>f(x_1,x_2)=f(x^{(0)}_1,x^{(0)}_2)+\frac{\partial f}{\partial x_1}| _{X^{(0)}} \Delta x_1 + \frac{\partial f}{\partial x_2}| _{X^{(0)}} \Delta x_2 + \frac{1}{2}[\frac{\partial ^2f}{\partial x_1^{2}}| _{X^{(0)}} \Delta x_1^{2} +<br>\frac{\partial ^2f}{\partial x_1\partial x_2}| _{X^{(0)}} \Delta x_1 \Delta x_2+<br>\frac{\partial ^2f}{\partial x_2^{2}}| _{X^{(0)}} \Delta x_2^{2}<br>]+…<br>$$<br>其中，$\Delta x_1=x_1-x^{(0)}_1$，$\Delta x_2=x_2-x^{(0)}_2$。</p>
+<p>如果写成矩阵的形式如下所示：<br>$$<br>f(X)=f(X^{(0)})+(\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2})_{X^{(0)}}<br>\left(\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)+<br>\frac{1}{2} \left(\begin{array}{2} \frac{\partial ^2f}{\partial x^{2}_1}  \frac{\partial ^2f}{\partial x_1\partial x_2} \ \frac{\partial ^2f}{\partial x_2 \partial x_1}  \frac{\partial ^2f}{\partial x^{2}<em>2} \end{array} \right)|</em>{X^{(0)}} \left (\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)+…<br>$$</p>
+<p>即:<br>$$<br>f(X)=f(X^{(0)})+\Delta f(X^{(0)})^T\Delta X + \frac{1}{2}\Delta X^T G(X^{(0)})\Delta{X}+…<br>$$</p>
+<p>其中：<br>$$<br>G(X^{(0)})=\left(\begin{array}{2} \frac{\partial ^2f}{\partial x^{2}_1}  \frac{\partial ^2f}{\partial x_1\partial x_2} \ \frac{\partial ^2f}{\partial x_2 \partial x_1}  \frac{\partial ^2f}{\partial x^{2}<em>2} \end{array} \right)|</em>{X^{(0)}} ,\Delta{X}=\left (\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)<br>$$<br>那么$G(X^{(0)})$是$f(x_1,x_2)$在$X^{(0)}$处的hessian矩阵。</p>
+<p><img src="/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/image-20210522135343589.png" alt="image-20210522135343589"></p>
+<p><img src="/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/image-20210522135356500.png" alt="image-20210522135356500"></p>
+<p><img src="/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/image-20210522135409845.png" alt="image-20210522135409845"></p>
+<p><img src="/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/image-20210522135446484.png" alt="image-20210522135446484"></p>
 
                 
             </div>
@@ -478,7 +484,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Booligan-swy.github.io/2021/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88DFS/">https://Booligan-swy.github.io/2021/04/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E8%B0%88%E8%B0%88DFS/</a>
+                    <a href="https://Booligan-swy.github.io/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/">https://Booligan-swy.github.io/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -516,8 +522,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">数据结构与算法</span>
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
                                 </a>
                             
                         </div>
@@ -829,17 +835,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/12/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93%E6%AF%94%E8%BE%83/">
+                <a href="/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="优化方法总结比较">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="hessian matrix">
                         
-                        <span class="card-title">优化方法总结比较</span>
+                        <span class="card-title">hessian matrix</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -849,9 +856,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -864,6 +871,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -882,13 +890,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/26/%E4%B8%AD%E5%85%B4%E6%8D%A7%E6%9C%88%E7%A5%9E%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%B2%BE%E8%8B%B1%E6%8C%91%E6%88%98%E8%B5%9B-%E6%AF%94%E7%89%B9%E6%B4%BE%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/%E4%B8%AD%E5%85%B4%E6%8D%A7%E6%9C%88%E7%A5%9E%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%B2%BE%E8%8B%B1%E6%8C%91%E6%88%98%E8%B5%9B-%E6%AF%94%E7%89%B9%E6%B4%BE%E7%AC%AC%E4%B8%80%E5%9C%BA%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">
+                <a href="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="中兴捧月神算法-算法精英挑战赛-比特派第一场试题总结">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="LeetCode热门题型汇总">
                         
-                        <span class="card-title">中兴捧月神算法-算法精英挑战赛-比特派第一场试题总结</span>
+                        <span class="card-title">LeetCode热门题型汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -899,14 +907,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%B8%AD%E5%85%B4%E6%8D%A7%E6%9C%88%E7%A5%9E%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%B2%BE%E8%8B%B1%E6%8C%91%E6%88%98%E8%B5%9B-%E6%AF%94%E7%89%B9%E6%B4%BE%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" class="post-category">
-                                    中兴捧月神算法-算法精英挑战赛-比特派试题总结
+                            <a href="/categories/LeetCode/" class="post-category">
+                                    LeetCode
                                 </a>
                             
                             
@@ -916,8 +924,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%B8%AD%E5%85%B4%E6%8D%A7%E6%9C%88%E7%A5%9E%E7%AE%97%E6%B3%95-%E7%AE%97%E6%B3%95%E7%B2%BE%E8%8B%B1%E6%8C%91%E6%88%98%E8%B5%9B-%E6%AF%94%E7%89%B9%E6%B4%BE%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">中兴捧月神算法-算法精英挑战赛-比特派试题总结</span>
+                    <a href="/tags/LeetCode/">
+                        <span class="chip bg-color">LeetCode</span>
                     </a>
                     
                 </div>
