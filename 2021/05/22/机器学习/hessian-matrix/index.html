@@ -451,7 +451,7 @@
             <div id="articleContent">
                 <h1 id="Hessian矩阵："><a href="#Hessian矩阵：" class="headerlink" title="Hessian矩阵："></a>Hessian矩阵：</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p><font face="宋体">是一个多元函数的二阶偏导数构成的方阵，描述了函数的局部曲率。</font></p>
 <p>假设一元函数$f(x)$在$x_{0}$点的某个邻域内具有任意阶导数，则$f(x)$在该点的泰勒展开式为：<br>$$<br>f(x)=f(x_{0})+f’(x_{0})\Delta x+1/2*f’’(x_{0})(\Delta x)^2+…<br>$$<br>对于二元函数$f(x_1,x_2)$在$X^{(0)}=(x^{(0)}_1,x^{(0)}_2)$点处的泰勒展开式为：<br>$$<br>f(x_1,x_2)=f(x^{(0)}_1,x^{(0)}_2)+\frac{\partial f} {\partial x_1}| _{X^{(0)} } \Delta x_1 + \frac{\partial f} {\partial x_2}| _{X^{(0)} } \Delta x_2 + \frac{1} {2}[\frac{\partial ^2f}{\partial x_1^{2} }| _{X^{(0)} } \Delta x_1^{2} +<br>\frac{\partial ^2f} {\partial x_1\partial x_2}| _{X^{(0)} } \Delta x_1 \Delta x_2+<br>\frac{\partial ^2f} {\partial x_2^{2} }| _{X^{(0)} } \Delta x_2^{2}<br>]+…<br>$$<br>其中，$\Delta x_1=x_1-x^{(0)}_1$，$\Delta x_2=x_2-x^{(0)}_2$。</p>
-<p>如果写成矩阵的形式如下所示：<br>$$<br>f(X)=f(X^{(0)})+(\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2})_{X^{(0)}}<br>\left(\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)+<br>\frac{1}{2} \left(\begin{array}{2} \frac{\partial ^2f}{\partial x^{2}_1}  \frac{\partial ^2f}{\partial x_1\partial x_2} \ \frac{\partial ^2f}{\partial x_2 \partial x_1}  \frac{\partial ^2f}{\partial x^{2}<em>2} \end{array} \right)|</em>{X^{(0)}} \left (\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)+…<br>$$</p>
+<p>如果写成矩阵的形式如下所示：<br>$$<br>f(X)=f(X^{(0)})+(\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2})_{X^{(0)} }<br>\left(\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)+<br>\frac{1}{2} \left(\begin{array}{2} \frac{\partial ^2f}{\partial x^{2}_1}  \frac{\partial ^2f}{\partial x_1\partial x_2} \ \frac{\partial ^2f}{\partial x_2 \partial x_1}  \frac{\partial ^2f}{\partial x^{2}<em>2} \end{array} \right)|</em>{X^{(0)} } \left (\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)+…<br>$$</p>
 <p>即:<br>$$<br>f(X)=f(X^{(0)})+\Delta f(X^{(0)})^T\Delta X + \frac{1}{2}\Delta X^T G(X^{(0)})\Delta{X}+…<br>$$</p>
 <p>其中：<br>$$<br>G(X^{(0)})=\left(\begin{array}{2} \frac{\partial ^2f}{\partial x^{2}_1}  \frac{\partial ^2f}{\partial x_1\partial x_2} \ \frac{\partial ^2f}{\partial x_2 \partial x_1}  \frac{\partial ^2f}{\partial x^{2}<em>2} \end{array} \right)|</em>{X^{(0)}} ,\Delta{X}=\left (\begin{array}{2} \Delta x_1 \ \Delta x_2 \end{array} \right)<br>$$<br>那么$G(X^{(0)})$是$f(x_1,x_2)$在$X^{(0)}$处的hessian矩阵。</p>
 <p><img src="/2021/05/22/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/hessian-matrix/image-20210522135343589.png" alt="image-20210522135343589"></p>
@@ -1119,7 +1119,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39.4k</span>&nbsp;字
+                class="white-color">42.4k</span>&nbsp;字
             
             
             

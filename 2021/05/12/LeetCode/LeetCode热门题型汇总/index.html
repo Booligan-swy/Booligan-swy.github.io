@@ -420,14 +420,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-05-22
+                    2021-05-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.7k
+                    13.7k
                 </div>
                 
 
@@ -2004,231 +2004,789 @@
 <li>空间复杂度：O($|\Sigma|$)，其中$\Sigma$表示字符集</li>
 </ul>
 </blockquote>
-<h2 id="121-买卖股票的最佳时机-1"><a href="#121-买卖股票的最佳时机-1" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-22"><a href="#题目描述：-22" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="5-最长回文子串（中等）"><a href="#5-最长回文子串（中等）" class="headerlink" title="5.最长回文子串（中等）"></a>5.最长回文子串（中等）</h2><h3 id="题目描述：-22"><a href="#题目描述：-22" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体">给你一个字符串 <code>s</code>，找到 <code>s</code> 中最长的回文子串。</font></p>
+<p><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210523203821307.png" alt="image-20210523203821307"></p>
+<h3 id="题解思路：-22"><a href="#题解思路：-22" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">解法一：暴力求解。枚举所有的子串，查看是否是回文，又是否是最长的子串的回文。（leetcode提交超时！）</font></p>
+<p><font face="宋体">解法二：按照求解最长的公共子串的方法来求解。</font>首先将字符串s进行翻转得到s’，然后再利用动态规划的方法去求解其中的最长公共子串。</p>
+<p>动态规划的步骤：</p>
+<ul>
+<li>1.设定一个dp二维数组，初始的大小设定为(n,n)，并将大小设置为0；</li>
+<li>2.如果i=0或者j=0，且对应的字符相等就让$dp[i][j]$置为1；</li>
+<li>3.如果i&gt;0且j&gt;0，且对应的字符相等就$dp[i][j]=dp[i][j]+1$;</li>
+<li>然后利用两个变量maxLen和end分别记录最长的子串大小和位置，如果s’当前的位置（主要是指公共子串）j在未翻转时的位置beforeRev=n-1-j，然后求证是否beforeRev+$dp[i][j]$-1等于i，如果是，那就是所求的回文，否则就不是回文。</li>
+</ul>
+<p><font face="宋体">解法三：</font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
-<h3 id="题解思路：-22"><a href="#题解思路：-22" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="实现代码：-22"><a href="#实现代码：-22" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
+<h3 id="实现代码：-22"><a href="#实现代码：-22" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法一</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//判断是否为回文</span>
+    <span class="token keyword">bool</span> <span class="token function">isPalindrome</span><span class="token punctuation">(</span>string s_t<span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;</span>right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s_t<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">!=</span> s_t<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            left<span class="token operator">++</span><span class="token punctuation">;</span>
+            right<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    string <span class="token function">longestPalindrome</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> s<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> maxStrLen <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> begin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// string maxStr = s.substr(0,1);</span>
+
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>maxStrLen <span class="token operator">&lt;</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isPalindrome</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    
+                    maxStrLen <span class="token operator">=</span> j<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                    begin <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                    
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span>maxStrLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法一的复杂度分析：</p>
+<ul>
+<li>时间复杂度：$O(n^3)$，使用了两层嵌套的for循环$O(n^2)$，for里面又有一层循环是来判断是否是回文$O(n)$，因此，总的时间复杂度是$O(n^3)$；</li>
+<li>空间复杂度：O(1)，常数个变量。</li>
+</ul>
+</blockquote>
+<h3 id><a href="#" class="headerlink" title></a></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法二</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    string <span class="token function">longestPalindrome</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">dp</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>n<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//将字符串反转</span>
+        string s_r <span class="token operator">=</span> s<span class="token punctuation">;</span>
+        <span class="token function">reverse</span><span class="token punctuation">(</span>s_r<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>s_r<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxLen <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> end <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> s_r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> s_r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                
+                <span class="token keyword">if</span><span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> s_r<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token keyword">if</span><span class="token punctuation">(</span>maxLen <span class="token operator">&lt;</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">int</span> beforeRev <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> j<span class="token punctuation">;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>beforeRev<span class="token operator">+</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">==</span> i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        maxLen <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                        end <span class="token operator">=</span> i<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>end<span class="token operator">-</span>maxLen<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>maxLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法一的复杂度分析：</p>
+<ul>
+<li>时间复杂度：</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<h3 id="-1"><a href="#-1" class="headerlink" title></a></h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法一</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-2"><a href="#121-买卖股票的最佳时机-2" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-23"><a href="#题目描述：-23" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
+<blockquote>
+<p>解法一的复杂度分析：</p>
+<ul>
+<li>时间复杂度：</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法一</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>解法一的复杂度分析：</p>
+<ul>
+<li>时间复杂度：</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<h2 id="11-盛最多水的容器（中等）"><a href="#11-盛最多水的容器（中等）" class="headerlink" title="11.盛最多水的容器（中等）"></a>11.盛最多水的容器（中等）</h2><h3 id="题目描述：-23"><a href="#题目描述：-23" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体">给你 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</font></p>
+<p><font face="宋体"><strong>说明：</strong>你不能倾斜容器。</font></p>
+<p><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210524162926579.png" alt="image-20210524162926579"></p>
+<p><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210524162941315.png" alt="image-20210524162941315"></p>
 <h3 id="题解思路：-23"><a href="#题解思路：-23" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
-<h3 id="实现代码：-23"><a href="#实现代码：-23" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-3"><a href="#121-买卖股票的最佳时机-3" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-24"><a href="#题目描述：-24" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h3 id="实现代码：-23"><a href="#实现代码：-23" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法一：双指针</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maxArea</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> maxArea <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> height<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> right <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;</span>right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token operator">&lt;</span>height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                maxArea <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxArea<span class="token punctuation">,</span> <span class="token punctuation">(</span>right<span class="token operator">-</span>left<span class="token punctuation">)</span><span class="token operator">*</span>height<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                left<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                maxArea <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxArea<span class="token punctuation">,</span> <span class="token punctuation">(</span>right<span class="token operator">-</span>left<span class="token punctuation">)</span><span class="token operator">*</span>height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                right<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>      
+        <span class="token keyword">return</span> maxArea<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法一的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n)，双指针遍历一次数组；</li>
+<li>空间复杂度：O(1)，使用常数个变量。</li>
+</ul>
+</blockquote>
+<h2 id="15-三数之和（中等）"><a href="#15-三数之和（中等）" class="headerlink" title="15.三数之和（中等）"></a>15.三数之和（中等）</h2><h3 id="题目描述：-24"><a href="#题目描述：-24" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体">给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。</font></p>
+<p><font face="宋体"><strong>注意：</strong>答案中不可以包含重复的三元组。</font></p>
+<p><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210524172506668.png" alt="image-20210524172506668"></p>
+<h3 id="题解思路：-24"><a href="#题解思路：-24" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">首先对原始的数组进行一个排序，如果发现某个元素的值大于0，就说明其后面的数字不可能相加等于0（因为都是正数）。因此当遇到nums[i]&gt;0时就可以退出并返回结果。如果索引i处对应的元素值为非正数，再定义两个指针left和right分别为i+1和n-1，依次遍历后面的元素查看是否具有nums[i]+nums[left]+nums[right]=0,如果没有，就考虑相加的结果是大了还是小了，如果是大了，就让right减一，反之就让left加一。</font></p>
+<p><font face="宋体">在得到nums[i]+nums[left]+nums[right]=0时，就用数组将该三个值记录下来，并考察left与left+1对应的元素是否相等（主要是为了消除重复的情况），如果是相等就让left加一至于其下一位不相等为止，同样对于right进行相同的操作。</font></p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/">https://leetcode-cn.com/problems/3sum/solution/pai-xu-shuang-zhi-zhen-zhu-xing-jie-shi-python3-by/</a></p>
+</blockquote>
+<h3 id="实现代码：-24"><a href="#实现代码：-24" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//排序加双指针</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">threeSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> res<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token number">-1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    <span class="token keyword">continue</span><span class="token punctuation">;</span>
+
+                <span class="token keyword">int</span> left <span class="token operator">=</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> right <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;</span>right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">int</span> tmp <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token operator">+</span>nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>tmp <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        right<span class="token operator">--</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>tmp <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        left<span class="token operator">++</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                        res<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">{</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span>nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;</span>right <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            left<span class="token operator">++</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+
+                        <span class="token keyword">while</span><span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>right<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            right<span class="token operator">--</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                        <span class="token comment" spellcheck="true">//这里还进行此操作是因为上面的操作没有让left指向不与其之前元素重复的值上，同样对于right。</span>
+                        left<span class="token operator">++</span><span class="token punctuation">;</span>
+                        right<span class="token operator">--</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>代码的复杂度分析：</p>
+<ul>
+<li>时间复杂度：</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<h2 id="17-电话号码的字母组合（中等）"><a href="#17-电话号码的字母组合（中等）" class="headerlink" title="17.电话号码的字母组合（中等）"></a>17.电话号码的字母组合（中等）</h2><h3 id="题目描述：-25"><a href="#题目描述：-25" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体">给定一个仅包含数字 <code>2-9</code> 的字符串，返回所有它能表示的字母组合。答案可以按 <strong>任意顺序</strong> 返回。</font></p>
+<p><font face="宋体">给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</font></p>
+<p><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210525105732058.png" alt="image-20210525105732058"></p>
+<h3 id="题解思路：-25"><a href="#题解思路：-25" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">首先需要定义一个hash_map（unordered_map）用来存储每个数字所对应的字母。其次，定义一个容器contains用来存储每次递归回溯的结果。</font></p>
+<p><font face="宋体">当index=0时候，指向数字digits的第一个数字字符，并取得该字符所对应的字符串letters。然后依次遍历letters的每个字符，举个例子，当index=0时，中间字符串变量contain添加字符a，然后继续调用solve函数，并让index加一指向digits的第二个数字字符，进行相同的操作将字符d加入contain中组合成’ad’，再次调用递归，由于此时index=2与digits的长度一致就将结果存储在contains中，返回。然后删除’ad’中的字符’d’，再加入’e’组合成’ae’进行相同的操作。最终得到所有的组合答案。详情参考代码。</font></p>
+<h3 id="实现代码：-25"><a href="#实现代码：-25" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//回溯</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">solve</span><span class="token punctuation">(</span>unordered_map<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token punctuation">,</span>string<span class="token operator">></span> num_string_map<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">&amp;</span> contains<span class="token punctuation">,</span> string <span class="token operator">&amp;</span> digits<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">,</span> string<span class="token operator">&amp;</span> contain<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>index <span class="token operator">==</span> digits<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            contains<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>contain<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">char</span> num <span class="token operator">=</span> digits<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            string letters <span class="token operator">=</span> num_string_map<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token operator">:</span>letters<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                contain<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">solve</span><span class="token punctuation">(</span>num_string_map<span class="token punctuation">,</span>contains<span class="token punctuation">,</span>digits<span class="token punctuation">,</span>index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>contain<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                contain<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">letterCombinations</span><span class="token punctuation">(</span>string digits<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        unordered_map<span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token punctuation">,</span>string<span class="token operator">></span> num_string_map<span class="token punctuation">{</span>
+            <span class="token punctuation">{</span><span class="token string">'2'</span><span class="token punctuation">,</span><span class="token string">"abc"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'3'</span><span class="token punctuation">,</span><span class="token string">"def"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'4'</span><span class="token punctuation">,</span><span class="token string">"ghi"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'5'</span><span class="token punctuation">,</span><span class="token string">"jkl"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'6'</span><span class="token punctuation">,</span><span class="token string">"mno"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'7'</span><span class="token punctuation">,</span><span class="token string">"pqrs"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'8'</span><span class="token punctuation">,</span><span class="token string">"tuv"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span><span class="token string">'9'</span><span class="token punctuation">,</span><span class="token string">"wxyz"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> digits<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> contains<span class="token punctuation">;</span>
+        
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> contains<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        string contain<span class="token punctuation">;</span>
+        <span class="token function">solve</span><span class="token punctuation">(</span>num_string_map<span class="token punctuation">,</span>contains<span class="token punctuation">,</span>digits<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>contain<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> contains<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>代码的复杂度分析：</p>
+<ul>
+<li>时间复杂度：</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<h2 id="19-删除链表的倒数第N个结点（中等）"><a href="#19-删除链表的倒数第N个结点（中等）" class="headerlink" title="19.删除链表的倒数第N个结点（中等）"></a>19.删除链表的倒数第N个结点（中等）</h2><h3 id="题目描述：-26"><a href="#题目描述：-26" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体">给你一个链表，删除链表的倒数第n个结点，并且返回链表的头结点。</font></p>
+<p><font face="宋体"><strong>进阶：</strong>你能尝试使用一趟扫描实现吗?</font></p>
+<h3 id="-2"><a href="#-2" class="headerlink" title></a><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210525144945418.png" alt="image-20210525144945418"></h3><h3 id="题解思路：-26"><a href="#题解思路：-26" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-24"><a href="#题解思路：-24" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="实现代码：-24"><a href="#实现代码：-24" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-4"><a href="#121-买卖股票的最佳时机-4" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-25"><a href="#题目描述：-25" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-25"><a href="#题解思路：-25" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="实现代码：-25"><a href="#实现代码：-25" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-5"><a href="#121-买卖股票的最佳时机-5" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-26"><a href="#题目描述：-26" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-26"><a href="#题解思路：-26" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="实现代码：-26"><a href="#实现代码：-26" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-6"><a href="#121-买卖股票的最佳时机-6" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-27"><a href="#题目描述：-27" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="题解思路：-27"><a href="#题解思路：-27" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
-<p><font face="宋体"></font></p>
-<h3 id="实现代码：-27"><a href="#实现代码：-27" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-7"><a href="#121-买卖股票的最佳时机-7" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-28"><a href="#题目描述：-28" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h3 id="实现代码：-26"><a href="#实现代码：-26" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法一：使用两次遍历，第一次找到链表的长度，第二次遍历是具体到题目要求的节点更改指向即可。</span>
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode<span class="token operator">*</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> length <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        
+        ListNode<span class="token operator">*</span> h1 <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> newNode <span class="token operator">=</span> h1<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>newNode <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            length<span class="token operator">++</span><span class="token punctuation">;</span>
+            newNode <span class="token operator">=</span> newNode<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>length <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>length <span class="token operator">==</span> n <span class="token operator">&amp;&amp;</span> n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// newNode = head;</span>
+            newNode <span class="token operator">=</span> head<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+             h1 <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+              
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> k <span class="token operator">=</span> length <span class="token operator">-</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            newNode <span class="token operator">=</span> head<span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>k<span class="token operator">--</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                newNode <span class="token operator">=</span> newNode<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>             
+            <span class="token punctuation">}</span>
+            ListNode<span class="token operator">*</span> nextNode <span class="token operator">=</span> newNode<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+
+            newNode<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> nextNode<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            nextNode<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+
+        <span class="token keyword">return</span> h1<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法一的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n)，n是链表的长度；</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法二：</span>
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode<span class="token operator">*</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        
+        stack<span class="token operator">&lt;</span>ListNode<span class="token operator">*</span><span class="token operator">></span> st<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> cur <span class="token operator">=</span> dummy<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>cur <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            st<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cur <span class="token operator">=</span> cur<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">--</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            st<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        ListNode<span class="token operator">*</span> newNode <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newNode<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> newNode<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> ans <span class="token operator">=</span> dummy<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> dummy<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法二的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n)，n表示链表的长度；</li>
+<li>空间复杂度：O(n)，主要的消耗来自于栈，其它的都是常数个变量。</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法三：递归</span>
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode<span class="token operator">*</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        head<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span>head<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">++</span>count <span class="token operator">==</span> n<span class="token operator">?</span> head<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">:</span>head<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法三的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n)，因为要遍历整个链表，因此，时间复杂度就是O(n)；</li>
+<li>空间复杂度：O(n)，每一次递归都是遍历链表中的某个节点，因此找到尾结点时递归了n次。</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法四：双指针</span>
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode<span class="token operator">*</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ListNode<span class="token operator">*</span> left <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> right <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> ans <span class="token operator">=</span> left<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//先让right走n次</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> right<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            n<span class="token operator">--</span><span class="token punctuation">;</span>
+            right <span class="token operator">=</span> right<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> right<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            ans <span class="token operator">=</span> left<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>right<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                right <span class="token operator">=</span> right<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+                left <span class="token operator">=</span> left<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            left<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> left<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>解法四的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n);</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//解法四的另一种写法：（妙！）</span>
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode<span class="token operator">*</span> <span class="token function">removeNthFromEnd</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ListNode<span class="token operator">*</span> dummy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> first <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> second <span class="token operator">=</span> dummy<span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            first <span class="token operator">=</span> first<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            first <span class="token operator">=</span> first<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+            second <span class="token operator">=</span>second<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        second<span class="token operator">-</span><span class="token operator">></span>next <span class="token operator">=</span> second<span class="token operator">-</span><span class="token operator">></span>next<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> ans <span class="token operator">=</span> dummy<span class="token operator">-</span><span class="token operator">></span>next<span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p> 解法四的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n);</li>
+<li>空间复杂度：O(1)。</li>
+</ul>
+</blockquote>
+<h2 id="22-括号生成（中等）"><a href="#22-括号生成（中等）" class="headerlink" title="22.括号生成（中等）"></a>22.括号生成（中等）</h2><h3 id="题目描述：-27"><a href="#题目描述：-27" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体">数字n代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且有效的括号组合。</font></p>
+<p><img src="/2021/05/12/LeetCode/LeetCode%E7%83%AD%E9%97%A8%E9%A2%98%E5%9E%8B%E6%B1%87%E6%80%BB/image-20210525163615032.png" alt="image-20210525163615032"></p>
+<h3 id="题解思路：-27"><a href="#题解思路：-27" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体">解法一：深度优先搜索。我们可以把括号的组合利用二叉树的形式来表示。</font></p>
+<pre class="line-numbers language-mermaid"><code class="language-mermaid">graph TD;
+    空字符:左2右2-->L:左1右2;
+    空字符:左2右2-->R:左2右1;
+    L:左1右2-->LL:左0右2;
+    L:左1右2-->LR:左1右1;
+    LL:左0右2-->NULL_1;
+    LL:左0右2-->LLR:左0右1;
+    LLR:左0右1-->NULL_2;
+    LLR:左0右1-->LLRR:左0右0;
+    LR:左1右1-->LRL:左0右1;
+    LR:左1右1-->LRR:左1右0;
+    LRL:左0右1-->NULL_3;
+    LRL:左0右1-->LRLR:左0右0;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><font face="宋体">解法二：广度优先搜索。</font></p>
+<h3 id="实现代码：-27"><a href="#实现代码：-27" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//dfs</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span>string res_tmp<span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span><span class="token operator">&amp;</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            res<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>res_tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//剪枝(当前情况下生成了无效的括号)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">></span> right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">dfs</span><span class="token punctuation">(</span>res_tmp<span class="token operator">+</span><span class="token string">"("</span><span class="token punctuation">,</span>left<span class="token number">-1</span><span class="token punctuation">,</span>right<span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>right <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token function">dfs</span><span class="token punctuation">(</span>res_tmp<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">,</span>left<span class="token punctuation">,</span>right<span class="token number">-1</span><span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">generateParenthesis</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//定义一个容器用来存储结果</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> result<span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>n<span class="token punctuation">,</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>深度优先搜索的复杂度分析：</p>
+<ul>
+<li>时间复杂度：O(n)，因为n表示是括号的成对数，那么总的括号数是2n，需要遍历所有可能的情况</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//BFS</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+        <span class="token comment" spellcheck="true">//当前得到的字符串</span>
+        string res<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//左括号数</span>
+        <span class="token keyword">int</span> left<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//右括号数</span>
+        <span class="token keyword">int</span> right<span class="token punctuation">;</span>
+        
+        <span class="token function">Node</span><span class="token punctuation">(</span>string res<span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">=</span> left<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">=</span> right<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>res <span class="token operator">=</span> res<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">generateParenthesis</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//定义一个容器用来存储结果</span>
+        vector<span class="token operator">&lt;</span>string<span class="token operator">></span> result<span class="token punctuation">;</span>
+        
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        queue<span class="token operator">&lt;</span>Node<span class="token operator">*</span><span class="token operator">></span> que<span class="token punctuation">;</span>
+        Node<span class="token operator">*</span> newNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        que<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>que<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            Node<span class="token operator">*</span> curNode <span class="token operator">=</span> que<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            que<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span>curNode<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> curNode<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                result<span class="token punctuation">.</span><span class="token function">emplace_back</span><span class="token punctuation">(</span>curNode<span class="token operator">-</span><span class="token operator">></span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>curNode<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                que<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>curNode<span class="token operator">-</span><span class="token operator">></span>res<span class="token operator">+</span><span class="token string">"("</span><span class="token punctuation">,</span> curNode<span class="token operator">-</span><span class="token operator">></span>left<span class="token number">-1</span><span class="token punctuation">,</span>curNode<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>curNode<span class="token operator">-</span><span class="token operator">></span>right <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> curNode<span class="token operator">-</span><span class="token operator">></span>left <span class="token operator">&lt;</span> curNode<span class="token operator">-</span><span class="token operator">></span>right<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                que<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>curNode<span class="token operator">-</span><span class="token operator">></span>res<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">,</span>curNode<span class="token operator">-</span><span class="token operator">></span>left<span class="token punctuation">,</span>curNode<span class="token operator">-</span><span class="token operator">></span>right<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>         
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>广度优先搜索的复杂度分析：</p>
+<ul>
+<li>时间复杂度：</li>
+<li>空间复杂度：</li>
+</ul>
+</blockquote>
+<h2 id="121-买卖股票的最佳时机-1"><a href="#121-买卖股票的最佳时机-1" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-28"><a href="#题目描述：-28" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-28"><a href="#题解思路：-28" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-28"><a href="#实现代码：-28" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-8"><a href="#121-买卖股票的最佳时机-8" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-29"><a href="#题目描述：-29" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-2"><a href="#121-买卖股票的最佳时机-2" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-29"><a href="#题目描述：-29" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-29"><a href="#题解思路：-29" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-29"><a href="#实现代码：-29" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-9"><a href="#121-买卖股票的最佳时机-9" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-30"><a href="#题目描述：-30" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-3"><a href="#121-买卖股票的最佳时机-3" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-30"><a href="#题目描述：-30" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-30"><a href="#题解思路：-30" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-30"><a href="#实现代码：-30" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-10"><a href="#121-买卖股票的最佳时机-10" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-31"><a href="#题目描述：-31" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-4"><a href="#121-买卖股票的最佳时机-4" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-31"><a href="#题目描述：-31" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-31"><a href="#题解思路：-31" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-31"><a href="#实现代码：-31" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-11"><a href="#121-买卖股票的最佳时机-11" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-32"><a href="#题目描述：-32" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-5"><a href="#121-买卖股票的最佳时机-5" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-32"><a href="#题目描述：-32" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-32"><a href="#题解思路：-32" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-32"><a href="#实现代码：-32" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-12"><a href="#121-买卖股票的最佳时机-12" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-33"><a href="#题目描述：-33" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-6"><a href="#121-买卖股票的最佳时机-6" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-33"><a href="#题目描述：-33" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-33"><a href="#题解思路：-33" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-33"><a href="#实现代码：-33" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-13"><a href="#121-买卖股票的最佳时机-13" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-34"><a href="#题目描述：-34" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-7"><a href="#121-买卖股票的最佳时机-7" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-34"><a href="#题目描述：-34" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-34"><a href="#题解思路：-34" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-34"><a href="#实现代码：-34" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-14"><a href="#121-买卖股票的最佳时机-14" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-35"><a href="#题目描述：-35" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-8"><a href="#121-买卖股票的最佳时机-8" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-35"><a href="#题目描述：-35" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-35"><a href="#题解思路：-35" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-35"><a href="#实现代码：-35" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-15"><a href="#121-买卖股票的最佳时机-15" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-36"><a href="#题目描述：-36" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-9"><a href="#121-买卖股票的最佳时机-9" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-36"><a href="#题目描述：-36" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-36"><a href="#题解思路：-36" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-36"><a href="#实现代码：-36" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-16"><a href="#121-买卖股票的最佳时机-16" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-37"><a href="#题目描述：-37" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-10"><a href="#121-买卖股票的最佳时机-10" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-37"><a href="#题目描述：-37" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-37"><a href="#题解思路：-37" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-37"><a href="#实现代码：-37" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-17"><a href="#121-买卖股票的最佳时机-17" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-38"><a href="#题目描述：-38" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-11"><a href="#121-买卖股票的最佳时机-11" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-38"><a href="#题目描述：-38" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-38"><a href="#题解思路：-38" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-38"><a href="#实现代码：-38" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-18"><a href="#121-买卖股票的最佳时机-18" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-39"><a href="#题目描述：-39" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-12"><a href="#121-买卖股票的最佳时机-12" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-39"><a href="#题目描述：-39" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-39"><a href="#题解思路：-39" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-39"><a href="#实现代码：-39" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-19"><a href="#121-买卖股票的最佳时机-19" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-40"><a href="#题目描述：-40" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-13"><a href="#121-买卖股票的最佳时机-13" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-40"><a href="#题目描述：-40" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-40"><a href="#题解思路：-40" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-40"><a href="#实现代码：-40" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-20"><a href="#121-买卖股票的最佳时机-20" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-41"><a href="#题目描述：-41" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-14"><a href="#121-买卖股票的最佳时机-14" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-41"><a href="#题目描述：-41" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-41"><a href="#题解思路：-41" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-41"><a href="#实现代码：-41" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-21"><a href="#121-买卖股票的最佳时机-21" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-42"><a href="#题目描述：-42" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-15"><a href="#121-买卖股票的最佳时机-15" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-42"><a href="#题目描述：-42" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-42"><a href="#题解思路：-42" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-42"><a href="#实现代码：-42" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-22"><a href="#121-买卖股票的最佳时机-22" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-43"><a href="#题目描述：-43" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-16"><a href="#121-买卖股票的最佳时机-16" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-43"><a href="#题目描述：-43" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-43"><a href="#题解思路：-43" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-43"><a href="#实现代码：-43" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-23"><a href="#121-买卖股票的最佳时机-23" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-44"><a href="#题目描述：-44" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-17"><a href="#121-买卖股票的最佳时机-17" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-44"><a href="#题目描述：-44" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-44"><a href="#题解思路：-44" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-44"><a href="#实现代码：-44" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-24"><a href="#121-买卖股票的最佳时机-24" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-45"><a href="#题目描述：-45" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-18"><a href="#121-买卖股票的最佳时机-18" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-45"><a href="#题目描述：-45" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-45"><a href="#题解思路：-45" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-45"><a href="#实现代码：-45" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-25"><a href="#121-买卖股票的最佳时机-25" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-46"><a href="#题目描述：-46" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-19"><a href="#121-买卖股票的最佳时机-19" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-46"><a href="#题目描述：-46" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-46"><a href="#题解思路：-46" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-46"><a href="#实现代码：-46" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-26"><a href="#121-买卖股票的最佳时机-26" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-47"><a href="#题目描述：-47" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-20"><a href="#121-买卖股票的最佳时机-20" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-47"><a href="#题目描述：-47" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-47"><a href="#题解思路：-47" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-47"><a href="#实现代码：-47" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-27"><a href="#121-买卖股票的最佳时机-27" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-48"><a href="#题目描述：-48" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-21"><a href="#121-买卖股票的最佳时机-21" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-48"><a href="#题目描述：-48" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-48"><a href="#题解思路：-48" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-48"><a href="#实现代码：-48" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-28"><a href="#121-买卖股票的最佳时机-28" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-49"><a href="#题目描述：-49" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-22"><a href="#121-买卖股票的最佳时机-22" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-49"><a href="#题目描述：-49" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-49"><a href="#题解思路：-49" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-49"><a href="#实现代码：-49" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-29"><a href="#121-买卖股票的最佳时机-29" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-50"><a href="#题目描述：-50" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-23"><a href="#121-买卖股票的最佳时机-23" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-50"><a href="#题目描述：-50" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-50"><a href="#题解思路：-50" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-50"><a href="#实现代码：-50" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-30"><a href="#121-买卖股票的最佳时机-30" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-51"><a href="#题目描述：-51" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-24"><a href="#121-买卖股票的最佳时机-24" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-51"><a href="#题目描述：-51" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-51"><a href="#题解思路：-51" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-51"><a href="#实现代码：-51" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-31"><a href="#121-买卖股票的最佳时机-31" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-52"><a href="#题目描述：-52" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-25"><a href="#121-买卖股票的最佳时机-25" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-52"><a href="#题目描述：-52" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-52"><a href="#题解思路：-52" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-52"><a href="#实现代码：-52" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-32"><a href="#121-买卖股票的最佳时机-32" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-53"><a href="#题目描述：-53" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-26"><a href="#121-买卖股票的最佳时机-26" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-53"><a href="#题目描述：-53" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-53"><a href="#题解思路：-53" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="实现代码：-53"><a href="#实现代码：-53" class="headerlink" title="实现代码："></a>实现代码：</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="121-买卖股票的最佳时机-33"><a href="#121-买卖股票的最佳时机-33" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-54"><a href="#题目描述：-54" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
+<h2 id="121-买卖股票的最佳时机-27"><a href="#121-买卖股票的最佳时机-27" class="headerlink" title="121.买卖股票的最佳时机"></a>121.买卖股票的最佳时机</h2><h3 id="题目描述：-54"><a href="#题目描述：-54" class="headerlink" title="题目描述："></a>题目描述：</h3><p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <p><font face="宋体"></font></p>
 <h3 id="题解思路：-54"><a href="#题解思路：-54" class="headerlink" title="题解思路："></a>题解思路：</h3><p><font face="宋体"></font></p>
@@ -2894,7 +3452,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39.4k</span>&nbsp;字
+                class="white-color">42.4k</span>&nbsp;字
             
             
             
